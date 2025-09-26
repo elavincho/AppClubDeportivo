@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20sp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        tools:ignore="UselessParent">
+
+        <!-- cardview: esta etiqueta permite redondear la
+        imagen y darle un tamaño especifico -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="40sp"
+            app:cardCornerRadius="90dp">
+
+            <!-- Imagen: logo_club_deportivo -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="logo_club_deportivo"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icono_club_deportivo"
+                tools:ignore="HardcodedText" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Texto: CLUB DEPORTIVO -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="120sp"
+            android:text="CLUB DEPORTIVO"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!-- Texto: LOGIN -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center"
+            android:paddingBottom="20sp"
+            android:text="LOGIN"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+
+    </FrameLayout>
+
+    <!-- Campo de Usuario -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:background="@drawable/bg_text_input"
+        tools:ignore="HardcodedText" />
+
+    <!-- Campo de Contraseña -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:background="@drawable/bg_text_input"
+        tools:ignore="HardcodedText" />
+
+    <!-- Botón de Login -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#92C5FC"
+        android:text="ACCEDER"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Texto: FORGOT YOUR PASSOWORD? -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="FORGOT YOUR PASSOWORD?"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
