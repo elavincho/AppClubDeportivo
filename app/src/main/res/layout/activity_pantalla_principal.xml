@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PantallaPrincipalActivity"
+    android:layout_margin="20sp"
+    android:orientation="vertical">
+
+    <!-- Texto: Pantalla Principal -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:paddingBottom="20sp"
+        android:text="PANTALLA PRINCIPAL"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+
+    <!-- Botón Salir-->
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#DC143C"
+        android:text="SALIR"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
