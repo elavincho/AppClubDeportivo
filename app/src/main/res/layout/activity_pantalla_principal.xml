@@ -8,7 +8,7 @@
     android:layout_margin="20sp"
     android:orientation="vertical">
 
-    <!-- Texto: Pantalla Principal -->
+    <!-- Texto: Pantalla Principal
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,8 +18,55 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="35sp"
         android:textStyle="bold"
+        tools:ignore="HardcodedText" /> -->
+
+    <!-- Botón Registrar Socios-->
+    <Button
+        android:id="@+id/btnRegistrarSocios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:backgroundTint="#92C5FC"
+        android:text="Registrar Socios"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
         tools:ignore="HardcodedText" />
 
+    <!-- Botón Cobrar Cuota-->
+    <Button
+        android:id="@+id/btnCobrarCuota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#92C5FC"
+        android:text="Cobrar Cuota"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Botón Ver Carnet-->
+    <Button
+        android:id="@+id/btnVerCarnet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#92C5FC"
+        android:text="Ver Carnet"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Botón Vencimientos-->
+    <Button
+        android:id="@+id/btnVencimientos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#92C5FC"
+        android:text="Vencimientos"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
 
     <!-- Botón Salir-->
     <Button
@@ -28,9 +75,71 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="#DC143C"
-        android:text="SALIR"
+        android:text="Cerrar Sesión"
         android:textColor="@android:color/white"
         android:textSize="25sp"
         tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_boton_acceder"
+        tools:ignore="UselessLeaf">
+
+        <!-- Espacio flexible al inicio -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Imagen: img_carnet -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="carnet"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tarjeta"
+            tools:ignore="HardcodedText" />
+
+        <!-- Espacio flexible entre imágenes -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Imagen: img_inicio -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="casa"
+            android:scaleType="centerCrop"
+            android:src="@drawable/casa"
+            tools:ignore="HardcodedText" />
+
+        <!-- Espacio flexible entre imágenes -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Imagen: img_billetera -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="cobrar_cuota"
+            android:scaleType="centerCrop"
+            android:src="@drawable/billetera"
+            tools:ignore="HardcodedText" />
+
+        <!-- Espacio flexible al final -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
