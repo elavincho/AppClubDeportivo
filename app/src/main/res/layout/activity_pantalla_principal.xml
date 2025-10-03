@@ -4,9 +4,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PantallaPrincipalActivity"
     android:layout_margin="20sp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".PantallaPrincipalActivity">
 
     <!-- Texto: Pantalla Principal
     <TextView
@@ -83,9 +83,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="50dp"
         android:background="@drawable/bg_boton_acceder"
+        android:orientation="horizontal"
         tools:ignore="UselessLeaf">
 
         <!-- Espacio flexible al inicio -->
@@ -111,6 +111,7 @@
 
         <!-- Imagen: img_inicio -->
         <ImageView
+            android:id="@+id/btnInicio"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="casa"

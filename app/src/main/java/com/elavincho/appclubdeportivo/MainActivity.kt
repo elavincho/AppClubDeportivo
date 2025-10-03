@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             * Lleva 2 parametros, primero el contexto en el cual estamos trabajando this, dentro de la aplicación
             * y luego el nombre de la activity con la cual se va a comunicar y agregarle ::class.java*/
             val intent = Intent(this, PantallaPrincipalActivity::class.java)
-            /* Por ultimo hay que llamar al método startActiviti() y pasarle el intent*/
+            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
             startActivity(intent)
         }
 

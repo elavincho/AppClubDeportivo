@@ -9,36 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
-class PantallaPrincipalActivity : AppCompatActivity() {
+class VencimientosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_pantalla_principal)
+        setContentView(R.layout.activity_vencimientos)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        /*Botón Volver*/
-
-        val btnVolver = findViewById<Button>(R.id.btnSalir)
-
-        btnVolver.setOnClickListener {
-            val intentVolver = Intent(this, MainActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentVolver)
-        }
-
-        /*Botón Vencimientos*/
-
-        val btnVencimientos = findViewById<Button>(R.id.btnVencimientos)
-
-        btnVencimientos.setOnClickListener {
-            val intentVencimientos = Intent(this, VencimientosActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentVencimientos)
         }
 
         /*Botón Inicio (img_casa)*/
