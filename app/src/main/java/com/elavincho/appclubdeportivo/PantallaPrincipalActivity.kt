@@ -50,5 +50,15 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
             startActivity(intentPantallaPrincipal)
         }
+
+        /*Botón Cobrar Cuota*/
+
+        val btnCobrarCuota = findViewById<Button>(R.id.btnCobrarCuota)
+
+        btnCobrarCuota.setOnClickListener {
+            val intentCobrarCuota = Intent(this, CobrarCuotaActivity::class.java)
+            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+            startActivity(intentCobrarCuota)
+        }
     }
 }

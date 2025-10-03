@@ -1,322 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20sp"
-    android:orientation="vertical"
-    tools:context=".VencimientosActivity">
-
-
-    <!-- Texto: VENCIMIENTOS -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120sp"
-        android:gravity="center"
-        android:text="VENCIMIENTOS"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" />
-
-    <!-- Texto: Fecha -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
-        android:background="@drawable/bg_text_input"
-        android:padding="15dp"
-        android:text="Fecha"
-        android:textColor="@android:color/secondary_text_dark"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText" />
-
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
-        android:rowCount="1"
-        android:rowOrderPreserved="false"
-        android:useDefaultMargins="true">
-
-        <!-- 1° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <!-- 2° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <!-- 3° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <!-- 4° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <!-- 5° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <!-- 6° Fila -->
-        <!-- Imagen: img_usuario -->
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/usuario"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_columnWeight="1"
-            android:background="@drawable/bg_text_input"
-            android:orientation="horizontal">
-
-            <!-- Texto: Socio Número-->
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Socio Número"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Texto: Apellido -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:padding="10dp"
-                android:text="Apellido"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-    </GridLayout>
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/bg_boton_acceder"
-        android:orientation="horizontal"
-        tools:ignore="UselessLeaf">
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        tools:context=".VencimientosActivity">
 
-        <!-- Espacio flexible entre imágenes -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
-        <!-- Imagen: img_inicio -->
-        <ImageView
-            android:id="@+id/btnInicio"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="casa"
-            android:scaleType="centerCrop"
-            android:src="@drawable/casa"
+        <!-- Texto: VENCIMIENTOS -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120sp"
+            android:gravity="center"
+            android:text="VENCIMIENTOS"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="35sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <!-- Espacio flexible entre imágenes -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <!-- Texto: Fecha -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Fecha"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="1"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <!-- 1° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 2° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 3° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 4° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 5° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 6° Fila -->
+            <!-- Imagen: img_usuario -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/bg_text_input"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio Número-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Socio Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Apellido -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:padding="10dp"
+                    android:text="Apellido"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:background="@drawable/bg_boton_acceder"
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_inicio -->
+            <ImageView
+                android:id="@+id/btnInicio"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casa"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

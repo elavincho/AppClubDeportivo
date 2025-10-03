@@ -1,146 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20sp"
-    android:orientation="vertical"
-    tools:context=".PantallaPrincipalActivity">
-
-    <!-- Texto: Pantalla Principal
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top|center"
-        android:paddingBottom="20sp"
-        android:text="PANTALLA PRINCIPAL"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" /> -->
-
-    <!-- Botón Registrar Socios-->
-    <Button
-        android:id="@+id/btnRegistrarSocios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:backgroundTint="#92C5FC"
-        android:text="Registrar Socios"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Botón Cobrar Cuota-->
-    <Button
-        android:id="@+id/btnCobrarCuota"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#92C5FC"
-        android:text="Cobrar Cuota"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Botón Ver Carnet-->
-    <Button
-        android:id="@+id/btnVerCarnet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#92C5FC"
-        android:text="Ver Carnet"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Botón Vencimientos-->
-    <Button
-        android:id="@+id/btnVencimientos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#92C5FC"
-        android:text="Vencimientos"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Botón Salir-->
-    <Button
-        android:id="@+id/btnSalir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#DC143C"
-        android:text="Cerrar Sesión"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        tools:ignore="HardcodedText" />
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/bg_boton_acceder"
-        android:orientation="horizontal"
-        tools:ignore="UselessLeaf">
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        tools:context=".PantallaPrincipalActivity">
 
-        <!-- Espacio flexible al inicio -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <!-- Texto: Pantalla Principal
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:paddingBottom="20sp"
+            android:text="PANTALLA PRINCIPAL"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" /> -->
 
-        <!-- Imagen: img_carnet -->
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="carnet"
-            android:scaleType="centerCrop"
-            android:src="@drawable/tarjeta"
+        <!-- Botón Registrar Socios-->
+        <Button
+            android:id="@+id/btnRegistrarSocios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:backgroundTint="#92C5FC"
+            android:text="Registrar Socios"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
             tools:ignore="HardcodedText" />
 
-        <!-- Espacio flexible entre imágenes -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <!-- Imagen: img_inicio -->
-        <ImageView
-            android:id="@+id/btnInicio"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="casa"
-            android:scaleType="centerCrop"
-            android:src="@drawable/casa"
+        <!-- Botón Cobrar Cuota-->
+        <Button
+            android:id="@+id/btnCobrarCuota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#92C5FC"
+            android:text="Cobrar Cuota"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
             tools:ignore="HardcodedText" />
 
-        <!-- Espacio flexible entre imágenes -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <!-- Imagen: img_billetera -->
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="cobrar_cuota"
-            android:scaleType="centerCrop"
-            android:src="@drawable/billetera"
+        <!-- Botón Ver Carnet-->
+        <Button
+            android:id="@+id/btnVerCarnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#92C5FC"
+            android:text="Ver Carnet"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
             tools:ignore="HardcodedText" />
 
-        <!-- Espacio flexible al final -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <!-- Botón Vencimientos-->
+        <Button
+            android:id="@+id/btnVencimientos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#92C5FC"
+            android:text="Vencimientos"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Botón Salir-->
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#DC143C"
+            android:text="Cerrar Sesión"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/bg_boton_acceder"
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
+
+            <!-- Espacio flexible al inicio -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_carnet -->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="carnet"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tarjeta"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_inicio -->
+            <ImageView
+                android:id="@+id/btnInicio"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casa"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_billetera -->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="cobrar_cuota"
+                android:scaleType="centerCrop"
+                android:src="@drawable/billetera"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible al final -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>
