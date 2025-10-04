@@ -4,9 +4,41 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarSocioActivity"
     android:layout_margin="20sp"
-    android:orientation="vertical">
+    android:background="#dff6ff"
+    android:backgroundTintMode="screen"
+    android:orientation="vertical"
+    tools:context=".RegistrarSocioActivity">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat_semibold"
+
+        android:padding="10dp"
+        android:text="REGISTRO SOCIOS"
+        android:textAlignment="center"
+        android:textColor="#286AB4"
+        android:textSize="32sp"
+        android:translationY="62dp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:translationY="182dp" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        android:translationY="249dp" />
 </LinearLayout>
