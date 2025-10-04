@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppClubDeportivo">
         <activity
+            android:name=".VencimientoSocioVistaActivity"
+            android:exported="false" />
+        <activity
             android:name=".CobrarCuotaActivity"
             android:exported="false" />
         <activity

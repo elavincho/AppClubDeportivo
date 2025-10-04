@@ -3,42 +3,31 @@ package com.elavincho.appclubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class VencimientosActivity : AppCompatActivity() {
+class VencimientoSocioVistaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_vencimientos)
+        setContentView(R.layout.activity_vencimiento_socio_vista)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        /*Botón Inicio (img_casa)*/
+        /*Botón Volver a Venciminetos*/
 
-        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
+        val btnVolverVencimientos = findViewById<Button>(R.id.btnVolverVencimientos)
 
-        btnInicio.setOnClickListener {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
+        btnVolverVencimientos.setOnClickListener {
+            val intentVolverVencimientos = Intent(this, VencimientosActivity::class.java)
             /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentPantallaPrincipal)
-        }
-
-        /*Botón Socio (img_usuario + datos del socio)*/
-
-        val btnVencimientoSocioVista = findViewById<GridLayout>(R.id.usuarioId)
-
-        btnVencimientoSocioVista.setOnClickListener {
-            val intentDatosSocio = Intent(this, VencimientoSocioVistaActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentDatosSocio)
+            startActivity(intentVolverVencimientos)
         }
     }
 }
