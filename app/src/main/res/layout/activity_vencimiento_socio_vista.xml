@@ -137,7 +137,7 @@
             android:id="@+id/btnVolverVencimientos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="140dp"
             android:backgroundTint="#92C5FC"
             android:text="Volver"
             android:textColor="@android:color/white"
