@@ -9,35 +9,25 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class CobrarCuotaActivity : AppCompatActivity() {
+class ComprobantePagoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cobrar_cuota)
+        setContentView(R.layout.activity_comprobante_pago)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        /*Botón Inicio (img_casa)*/
+        /*Botón Volver a Cobrar Cuota*/
 
-        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
+        val btnVolverCobrarCuota = findViewById<Button>(R.id.btnVolverCobrarCuota)
 
-        btnInicio.setOnClickListener {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
+        btnVolverCobrarCuota.setOnClickListener {
+            val intentVolverCobrarCuota = Intent(this, CobrarCuotaActivity::class.java)
             /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentPantallaPrincipal)
-        }
-
-        /*Botón Generar Comprobante*/
-
-        val btnGenerarComprobante = findViewById<Button>(R.id.btnGenerarComprobante)
-
-        btnGenerarComprobante.setOnClickListener {
-            val intentGenerarComprobante = Intent(this, ComprobantePagoActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentGenerarComprobante)
+            startActivity(intentVolverCobrarCuota)
         }
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Borde Azul cielo de 2dp -->
+    <stroke
+        android:width="2dp"
+        android:color="#24CC00" />
+
+    <!-- Esquinas ligeramente redondeadas -->
+    <corners
+        android:radius="360dp" />
+
+    <!-- Fondo azul cielo -->
+    <solid
+        android:color="#24CC99" />
+
+</shape>
