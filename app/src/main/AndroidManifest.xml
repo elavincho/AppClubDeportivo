@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppClubDeportivo">
         <activity
+            android:name=".VistaCarnetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarnetActivity"
+            android:exported="false" />
+        <activity
             android:name=".ComprobantePagoActivity"
             android:exported="false" />
         <activity

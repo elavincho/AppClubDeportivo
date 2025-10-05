@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".CarnetActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+
+        <!-- Texto: CARNET -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80sp"
+            android:gravity="center"
+            android:text="CARNET"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:rowCount="1"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio-->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="Socio"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Número-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- Texto: Condición -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Condición"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Texto: Nombre -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Nombre"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Texto: Android -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Apellido"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Texto: Actividad -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Actividad"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Texto: Fecha Venc. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Fecha Venc."
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Botón Generar Carnet -->
+        <Button
+            android:id="@+id/btnGenerarCarnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#00FF66"
+            android:text="Generar Carnet"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_boton_acceder"
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_inicio -->
+            <ImageView
+                android:id="@+id/btnInicio"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casa"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

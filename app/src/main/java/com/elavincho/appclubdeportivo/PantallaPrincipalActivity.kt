@@ -60,5 +60,18 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
             startActivity(intentCobrarCuota)
         }
+
+
+
+
+        /*Botón Cobrar Ver Carnet*/
+
+        val btnCarnet = findViewById<Button>(R.id.btnVerCarnet)
+
+        btnCarnet.setOnClickListener {
+            val intentVerCarnet = Intent(this, CarnetActivity::class.java)
+            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+            startActivity(intentVerCarnet)
+        }
     }
 }

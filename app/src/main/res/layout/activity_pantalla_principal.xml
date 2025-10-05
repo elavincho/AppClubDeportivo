@@ -17,18 +17,6 @@
         android:orientation="vertical"
         tools:context=".PantallaPrincipalActivity">
 
-        <!-- Texto: Pantalla Principal
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|center"
-            android:paddingBottom="20sp"
-            android:text="PANTALLA PRINCIPAL"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" /> -->
-
         <!-- Botón Registrar Socios-->
         <Button
             android:id="@+id/btnRegistrarSocios"
