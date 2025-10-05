@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,47 +29,16 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:paddingTop="20dp"
-            android:text="REGISTRO SOCIOS"
+            android:text="APTO FISICO"
             android:textColor="#286AB4"
             android:textSize="35sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <EditText
-            android:id="@+id/edTxtNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:text="Nombre"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-             />
-
-        <EditText
-            android:id="@+id/edTxtApellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:text="Apellido"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            android:layout_marginTop="10dp"
-            tools:ignore="HardcodedText"
-
-            />
-
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:alignmentMode="alignMargins"
             android:columnCount="1"
             android:columnOrderPreserved="false"
@@ -83,29 +53,27 @@
                 android:orientation="horizontal">
 
                 <!-- Texto: Socio-->
-                <EditText
-                    android:id="@+id/edTxtTipoDoc"
-                    android:layout_width="110dp"
+                <Button
+                    android:id="@+id/btnGenerarComprobante"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="DNI"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
+                    android:layout_marginHorizontal="25dp"
+                    android:backgroundTint="#B400FF66"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Es Apto"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp"
                     tools:ignore="HardcodedText" />
 
                 <!-- Texto: Número-->
-                <EditText
-                    android:id="@+id/edTxtNroDoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Número"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
+                <ImageView
+                    android:id="@+id/btnClip"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:contentDescription="casa"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/paperclip"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
         </GridLayout>
@@ -116,75 +84,81 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
-            android:text="Fecha Nac."
+            android:text="Fecha Vencimiento"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
             android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:layout_marginTop="15dp"
+            tools:ignore="HardcodedText"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="10dp"
+            android:text="Datos del Médico"
+            android:textColor="#286AB4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/edTxtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Nombre"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
             tools:ignore="HardcodedText"
             android:layout_marginTop="10dp"
             />
 
         <EditText
-            android:id="@+id/edTxtTelefono"
+            android:id="@+id/edTxtApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
-            android:text="Telefóno"
+            android:text="Apellido"
             android:textColor="#7C000000"
-            android:textSize="20sp"
-            android:padding="20dp"
+            android:textSize="25sp"
             android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText"
+
+            />
+
+
+
+        <EditText
+            android:id="@+id/edTxtMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Matricula"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
             tools:ignore="HardcodedText"
             android:layout_marginTop="10dp"
             />
 
-        <EditText
-            android:id="@+id/edTxtMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:text="Mail"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
-
-        <EditText
-            android:id="@+id/edTxtDireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:text="Dirección"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
 
 
 
         <!-- Botón Generar Comprobante -->
-        <Button
-            android:id="@+id/btnGenerarComprobante"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#B400FF66"
-            android:fontFamily="@font/montserrat"
-            android:text="Apto Físico"
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
-            android:padding="15dp"
-            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"

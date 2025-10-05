@@ -84,5 +84,6 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             startActivity(intentRegistrarSocios)
         }
 
+
     }
 }
