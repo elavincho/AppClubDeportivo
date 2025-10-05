@@ -73,5 +73,16 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
             startActivity(intentVerCarnet)
         }
+
+        /*Botón Registrar Socios*/
+
+        val btnRegistrarSocios = findViewById<Button>(R.id.btnRegistrarSocios)
+
+        btnRegistrarSocios.setOnClickListener {
+            val intentRegistrarSocios = Intent(this, RegistrarSocioActivity::class.java)
+            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+            startActivity(intentRegistrarSocios)
+        }
+
     }
 }

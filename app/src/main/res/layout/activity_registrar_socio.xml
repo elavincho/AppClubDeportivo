@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DFF6FF"
+    android:backgroundTintMode="screen"
+    android:orientation="vertical"
+    tools:context=".RegistrarSocioActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:paddingTop="120sp"
+            android:text="REGISTRO SOCIOS"
+            android:textColor="#286AB4"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/edTxtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Nombre"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp"
+             />
+
+        <EditText
+            android:id="@+id/edTxtApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Apellido"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText"
+
+            />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:rowCount="1"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal">
+
+                <!-- Texto: Socio-->
+                <EditText
+                    android:id="@+id/edTxtTipoDoc"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="DNI"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Texto: Número-->
+                <EditText
+                    android:id="@+id/edTxtNroDoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="Número"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </GridLayout>
+
+        <EditText
+            android:id="@+id/edTxtFechaNac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Fecha Nac."
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edTxtTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Telefóno"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edTxtMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Mail"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edTxtDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/instrument_sans"
+            android:inputType="text"
+            android:text="Dirección"
+            android:textColor="#7C000000"
+            android:textSize="25sp"
+            android:background="@drawable/bg_text_input"
+            android:padding="10dp"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="10dp"
+            />
+
+
+
+        <!-- Botón Generar Comprobante -->
+        <Button
+            android:id="@+id/btnGenerarComprobante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#B400FF66"
+            android:fontFamily="@font/montserrat"
+            android:text="Apto Físico"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_boton_acceder"
+            android:orientation="horizontal"
+            tools:ignore="UselessLeaf">
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_delete -->
+            <ImageView
+                android:id="@+id/btnCerrar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/delete"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_inicio -->
+            <ImageView
+                android:id="@+id/btnInicio"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casa"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_tick_approve -->
+            <ImageView
+                android:id="@+id/btnOk"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tick_approve"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
