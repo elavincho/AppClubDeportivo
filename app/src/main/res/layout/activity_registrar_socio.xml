@@ -19,14 +19,14 @@
         android:layout_marginBottom="0dp"
         android:orientation="vertical">
 
-
+        <!-- Texto: REGISTRO SOCIOS-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:paddingTop="20dp"
             android:text="REGISTRO SOCIOS"
             android:textColor="#286AB4"
@@ -34,33 +34,34 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
+        <!-- EditText: Nombre -->
         <EditText
             android:id="@+id/edTxtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Nombre"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-             />
+            tools:ignore="HardcodedText" />
 
+        <!-- EditText: Apellido -->
         <EditText
             android:id="@+id/edTxtApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Apellido"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            android:layout_marginTop="10dp"
             tools:ignore="HardcodedText"
 
             />
@@ -82,7 +83,7 @@
                 android:layout_columnWeight="1"
                 android:orientation="horizontal">
 
-                <!-- Texto: Socio-->
+                <!-- EditText: DNI-->
                 <EditText
                     android:id="@+id/edTxtTipoDoc"
                     android:layout_width="110dp"
@@ -95,7 +96,7 @@
                     android:textSize="15sp"
                     tools:ignore="HardcodedText" />
 
-                <!-- Texto: Número-->
+                <!-- EditText: Número -->
                 <EditText
                     android:id="@+id/edTxtNroDoc"
                     android:layout_width="match_parent"
@@ -110,86 +111,85 @@
             </LinearLayout>
         </GridLayout>
 
+        <!-- EditText: Fecha Nac. -->
         <EditText
             android:id="@+id/edTxtFechaNac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Fecha Nac."
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
+            tools:ignore="HardcodedText" />
 
+        <!-- EditText: Teléfono -->
         <EditText
             android:id="@+id/edTxtTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Telefóno"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
+            tools:ignore="HardcodedText" />
 
+        <!-- EditText: Mail -->
         <EditText
             android:id="@+id/edTxtMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Mail"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
+            tools:ignore="HardcodedText" />
 
+        <!-- EditText: Dirección -->
         <EditText
             android:id="@+id/edTxtDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="20dp"
             android:text="Dirección"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:padding="20dp"
-            android:background="@drawable/bg_text_input"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
+            tools:ignore="HardcodedText" />
 
 
-
-        <!-- Botón Generar Comprobante -->
+        <!-- Botón Apto Físico -->
         <Button
-            android:id="@+id/btnGenerarComprobante"
+            android:id="@+id/btnAptoFisico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:backgroundTint="#B400FF66"
             android:fontFamily="@font/montserrat"
+            android:padding="15dp"
             android:text="Apto Físico"
             android:textColor="@android:color/black"
             android:textSize="25sp"
-            android:padding="15dp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">
@@ -248,6 +248,5 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

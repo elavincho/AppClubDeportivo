@@ -2,6 +2,7 @@ package com.elavincho.appclubdeportivo
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,16 @@ class RegistrarSocioActivity : AppCompatActivity() {
          val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
          /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
          startActivity(intentPantallaPrincipal)
+      }
+
+      /*Botón Apto Físico*/
+
+      val btnAptoFisico= findViewById<Button>(R.id.btnAptoFisico)
+
+      btnAptoFisico.setOnClickListener {
+         val intentAptoFisico= Intent(this, AptoFisicoActivity::class.java)
+         /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+         startActivity(intentAptoFisico)
       }
 
 

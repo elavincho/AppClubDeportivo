@@ -19,16 +19,16 @@
         android:layout_marginBottom="0dp"
         android:orientation="vertical">
 
-
+        <!-- Texto: APTO FÍSICO -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:paddingTop="20dp"
-            android:text="APTO FISICO"
+            android:text="APTO FÍSICO"
             android:textColor="#286AB4"
             android:textSize="35sp"
             android:textStyle="bold"
@@ -77,28 +77,28 @@
             </LinearLayout>
         </GridLayout>
 
+        <!-- EditText: Fecha Vencimiento -->
         <EditText
             android:id="@+id/edTxtFechaNac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="15dp"
             android:text="Fecha Vencimiento"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:layout_marginTop="15dp"
-            tools:ignore="HardcodedText"
-            />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:paddingTop="10dp"
             android:text="Datos del Médico"
             android:textColor="#286AB4"
@@ -106,55 +106,52 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
+        <!-- EditText: Nombre -->
         <EditText
             android:id="@+id/edTxtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="10dp"
             android:text="Nombre"
             android:textColor="#7C000000"
             android:textSize="25sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="10dp"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
+            tools:ignore="HardcodedText" />
 
+        <!-- EditText: Apellido -->
         <EditText
             android:id="@+id/edTxtApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="10dp"
             android:text="Apellido"
             android:textColor="#7C000000"
             android:textSize="25sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
             tools:ignore="HardcodedText"
 
             />
 
-
-
+        <!-- EditText: Matricula -->
         <EditText
             android:id="@+id/edTxtMatricula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
+            android:padding="10dp"
             android:text="Matricula"
             android:textColor="#7C000000"
             android:textSize="25sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="10dp"
-            tools:ignore="HardcodedText"
-            android:layout_marginTop="10dp"
-            />
-
-
+            tools:ignore="HardcodedText" />
 
 
         <!-- Botón Generar Comprobante -->
@@ -162,7 +159,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="130dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">
