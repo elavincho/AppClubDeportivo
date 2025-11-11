@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_text_input"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="usuario"
+        android:scaleType="centerCrop"
+        android:src="@drawable/usuario" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtSocioNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Socio Número: 1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNombreCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Apellido"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/txtDocumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DNI: 12345678"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+</LinearLayout>

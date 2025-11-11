@@ -34,6 +34,52 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:rowCount="1"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_columnWeight="1"
+                android:orientation="horizontal">
+
+                <!-- EditText: DNI-->
+                <EditText
+                    android:id="@+id/edTxtTipo"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="Tipo"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <!-- EditText: Número -->
+                <EditText
+                    android:id="@+id/edTxtTipoSocio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:background="@drawable/bg_text_input"
+                    android:padding="10dp"
+                    android:text="Socio / No Socio"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </GridLayout>
+
         <!-- EditText: Nombre -->
         <EditText
             android:id="@+id/edTxtNombre"
