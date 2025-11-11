@@ -27,7 +27,7 @@ class ListaSocioActivity : AppCompatActivity() {
         inicializarVistas()
 
         // Configurar fecha actual
-        configurarFecha()
+        //configurarFecha()
 
         // Cargar lista de socios
         cargarSocios()
@@ -38,17 +38,17 @@ class ListaSocioActivity : AppCompatActivity() {
 
     private fun inicializarVistas() {
         recyclerViewSocios = findViewById(R.id.recyclerViewSocios)
-        txtFecha = findViewById(R.id.txtFecha)
+        //txtFecha = findViewById(R.id.txtFecha)
         btnInicio = findViewById(R.id.btnInicio)
 
         // Configurar RecyclerView
         recyclerViewSocios.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun configurarFecha() {
-        val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        txtFecha.text = "Fecha: $fechaActual"
-    }
+//    private fun configurarFecha() {
+//        val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+//        txtFecha.text = "Fecha: $fechaActual"
+//    }
 
     private fun cargarSocios() {
         val listaSocios = dbHelper.obtenerTodosLosSocios()

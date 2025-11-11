@@ -34,7 +34,6 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,28 +51,29 @@
                 android:layout_columnWeight="1"
                 android:orientation="horizontal">
 
-                <!-- EditText: DNI-->
-                <EditText
-                    android:id="@+id/edTxtTipo"
+                <!-- TextView: Tipo -->
+                <TextView
+                    android:id="@+id/txtTipo"
                     android:layout_width="110dp"
                     android:layout_height="60dp"
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
+                    android:gravity="center"
                     android:padding="10dp"
-                    android:text="Tipo"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
+                    android:text="TIPO"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
                     tools:ignore="HardcodedText" />
 
-                <!-- EditText: Número -->
-                <EditText
-                    android:id="@+id/edTxtTipoSocio"
+                <!-- Spinner: Tipo Socio -->
+                <Spinner
+                    android:id="@+id/spinnerTipoSocio"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Socio / No Socio"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:textColor="@android:color/secondary_text_dark"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText" />
@@ -90,7 +90,7 @@
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
             android:padding="20dp"
-            android:text="Nombre"
+            android:hint="Nombre"
             android:textColor="#7C000000"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -105,12 +105,12 @@
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
             android:padding="20dp"
-            android:text="Apellido"
+            android:hint="Apellido"
             android:textColor="#7C000000"
             android:textSize="20sp"
-            tools:ignore="HardcodedText"
+            tools:ignore="HardcodedText" />
 
-            />
+
 
         <GridLayout
             android:layout_width="match_parent"
@@ -129,20 +129,20 @@
                 android:layout_columnWeight="1"
                 android:orientation="horizontal">
 
-                <!-- EditText: DNI-->
-                <EditText
-                    android:id="@+id/edTxtTipoDoc"
+                <!-- Spinner: Tipo de Documento -->
+                <Spinner
+                    android:id="@+id/spinnerTipoDoc"
                     android:layout_width="110dp"
                     android:layout_height="60dp"
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="DNI"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:textColor="@android:color/secondary_text_dark"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText" />
 
-                <!-- EditText: Número -->
+                <!-- EditText: Número de Documento -->
                 <EditText
                     android:id="@+id/edTxtNroDoc"
                     android:layout_width="match_parent"
@@ -150,7 +150,7 @@
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
                     android:padding="10dp"
-                    android:text="Número"
+                    android:hint="Número de Documento"
                     android:textColor="@android:color/secondary_text_dark"
                     android:textSize="15sp"
                     tools:ignore="HardcodedText" />
@@ -167,7 +167,7 @@
             android:fontFamily="@font/instrument_sans"
             android:inputType="text"
             android:padding="20dp"
-            android:text="Fecha Nac."
+            android:hint="Fecha Nac. (DD/MM/AAAA)"
             android:textColor="#7C000000"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -180,9 +180,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
+            android:inputType="phone"
             android:padding="20dp"
-            android:text="Telefóno"
+            android:hint="Teléfono"
             android:textColor="#7C000000"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -195,9 +195,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:padding="20dp"
-            android:text="Mail"
+            android:hint="Email"
             android:textColor="#7C000000"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -210,9 +210,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
+            android:inputType="textPostalAddress"
             android:padding="20dp"
-            android:text="Dirección"
+            android:hint="Dirección"
             android:textColor="#7C000000"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -236,6 +236,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">

@@ -1,5 +1,6 @@
 package com.elavincho.appclubdeportivo
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,14 @@ class SocioAdapter(private val socios: List<Socio>) :
         holder.txtSocioNumero.text = "Socio Número: ${socio.id}"
         holder.txtNombreCompleto.text = "${socio.nombre} ${socio.apellido}"
         holder.txtDocumento.text = "${socio.tipoDoc}: ${socio.nroDoc}"
+
+        // Hacer el item clickeable - navegar a DetalleSocioActivity
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetalleSocioActivity::class.java)
+            intent.putExtra("socio_id", socio.id)
+            holder.itemView.context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {

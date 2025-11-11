@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         tools:context=".ListaSocioActivity">
 
@@ -32,17 +32,17 @@
             tools:ignore="HardcodedText" />
 
         <!-- Texto: Fecha -->
-        <TextView
-            android:id="@+id/txtFecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Fecha"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+<!--        <TextView-->
+<!--            android:id="@+id/txtFecha"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="50sp"-->
+<!--            android:background="@drawable/bg_text_input"-->
+<!--            android:padding="15dp"-->
+<!--            android:text="Fecha"-->
+<!--            android:textColor="@android:color/secondary_text_dark"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:ignore="HardcodedText" />-->
 
         <!-- RecyclerView para la lista de socios -->
         <androidx.recyclerview.widget.RecyclerView
@@ -57,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">

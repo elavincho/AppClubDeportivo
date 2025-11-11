@@ -67,6 +67,18 @@
             android:textSize="25sp"
             tools:ignore="HardcodedText" />
 
+        <!-- Botón Lista Socios-->
+        <Button
+            android:id="@+id/btnListaSocios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#92C5FC"
+            android:text="Lista Socios / No Socios"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
         <!-- Botón Salir-->
         <Button
             android:id="@+id/btnSalir"

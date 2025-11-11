@@ -41,6 +41,16 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             startActivity(intentVencimientos)
         }
 
+        /*Botón ListaSocios*/
+
+        val btnListaSocios = findViewById<Button>(R.id.btnListaSocios)
+
+        btnListaSocios.setOnClickListener {
+            val intentListaSocios = Intent(this, ListaSocioActivity::class.java)
+            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+            startActivity(intentListaSocios)
+        }
+
         /*Botón Inicio (img_casa)*/
 
         val btnInicio = findViewById<ImageView>(R.id.btnInicio)

@@ -2,46 +2,40 @@ package com.elavincho.appclubdeportivo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.os.Handler
+import android.os.Looper
+import android.widget.*
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.Toast
-import org.w3c.dom.Text
-
-import android.widget.EditText
-import android.widget.Toast
-
-import android.os.Handler
-import android.os.Looper
 
 class RegistrarSocioActivity : AppCompatActivity() {
-<<<<<<< HEAD
-=======
-   override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      enableEdgeToEdge()
-
-      val edTxtNombre = findViewById<TextView>(R.id.edTxtNombre)
-      val edTxtApellido = findViewById<TextView>(R.id.edTxtApellido)
-      val edTxtNroDoc = findViewById<TextView>(R.id.edTxtNroDoc)
-      val edTxtFechaNac = findViewById<TextView>(R.id.edTxtFechaNac)
-      val edTxtTelefono = findViewById<TextView>(R.id.edTxtTelefono)
-      val edTxtMail = findViewById<TextView>(R.id.edTxtMail)
-      val edTxtDireccion = findViewById<TextView>(R.id.edTxtDireccion)
-
-      setContentView(R.layout.activity_registrar_socio)
-      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-         insets
-      }
->>>>>>> 33a2d9d11d6bbfdc138365bd32e00314154d2d38
 
     private lateinit var dbHelper: DBHelper
+    // Variable para pasar el id del socio al apto físico
+    private var idSocioActual: Int = -1
+
+    // Declarar las variables para las vistas
+    private lateinit var txtTipo: TextView
+    private lateinit var spinnerTipoSocio: Spinner
+    private lateinit var spinnerTipoDoc: Spinner
+    private lateinit var edTxtNombre: EditText
+    private lateinit var edTxtApellido: EditText
+    private lateinit var edTxtNroDoc: EditText
+    private lateinit var edTxtFechaNac: EditText
+    private lateinit var edTxtTelefono: EditText
+    private lateinit var edTxtMail: EditText
+    private lateinit var edTxtDireccion: EditText
+
+    private lateinit var btnOk: ImageView
+    private lateinit var btnInicio: ImageView
+    private lateinit var btnCerrar: ImageView
+
+    // Arrays para los Spinners
+    private val tiposSocio = arrayOf("Socio", "No Socio")
+    private val tiposDocumento = arrayOf("DNI", "Cédula", "Pasaporte", "LC", "LE")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,75 +48,97 @@ class RegistrarSocioActivity : AppCompatActivity() {
         }
 
         /*Botón Inicio (img_casa)*/
+//        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
+//        btnInicio.setOnClickListener {
+//            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
+//            startActivity(intentPantallaPrincipal)
+//        }
 
-        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
-
-        btnInicio.setOnClickListener {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentPantallaPrincipal)
-        }
-
-<<<<<<< HEAD
         /*Botón Apto Físico*/
-
         val btnAptoFisico = findViewById<Button>(R.id.btnAptoFisico)
-
         btnAptoFisico.setOnClickListener {
-            val intentAptoFisico = Intent(this, AptoFisicoActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentAptoFisico)
+            if (idSocioActual != -1) {
+                val intentAptoFisico = Intent(this, AptoFisicoActivity::class.java)
+                intentAptoFisico.putExtra("socio_id", idSocioActual)
+                startActivity(intentAptoFisico)
+            } else {
+                Toast.makeText(this, "Primero guarde el socio para cargar el apto físico", Toast.LENGTH_LONG).show()
+            }
         }
 
 
         // Inicializar DBHelper
         dbHelper = DBHelper(this)
 
-        // Verificar estructura de la tabla
-        dbHelper.verificarEstructuraTabla()
-
-        // Inicializar los EditText
+        // Inicializar vistas
         inicializarVistas()
+
+        // Configurar Spinners
+        configurarSpinners()
 
         // Configurar los listeners de los botones
         configurarBotones()
-
-
     }
 
-
-    // Declarar las variables para los EditText
-    private lateinit var edTxtTipo: EditText
-    private lateinit var edTxtTipoSocio: EditText
-    private lateinit var edTxtNombre: EditText
-    private lateinit var edTxtApellido: EditText
-    private lateinit var edTxtTipoDoc: EditText
-    private lateinit var edTxtNroDoc: EditText
-    private lateinit var edTxtFechaNac: EditText
-    private lateinit var edTxtTelefono: EditText
-    private lateinit var edTxtMail: EditText
-    private lateinit var edTxtDireccion: EditText
-
-    private lateinit var btnOk: ImageView
-    private lateinit var btnInicio: ImageView
-    private lateinit var btnCerrar: ImageView
-
-
     private fun inicializarVistas() {
-        edTxtTipo = findViewById(R.id.edTxtTipo)
-        edTxtTipoSocio = findViewById(R.id.edTxtTipoSocio)
+        // TextView para Tipo (fijo)
+        txtTipo = findViewById(R.id.txtTipo)
+
+        // Spinners
+        spinnerTipoSocio = findViewById(R.id.spinnerTipoSocio)
+        spinnerTipoDoc = findViewById(R.id.spinnerTipoDoc)
+
+        // EditTexts
         edTxtNombre = findViewById(R.id.edTxtNombre)
         edTxtApellido = findViewById(R.id.edTxtApellido)
-        edTxtTipoDoc = findViewById(R.id.edTxtTipoDoc)
         edTxtNroDoc = findViewById(R.id.edTxtNroDoc)
         edTxtFechaNac = findViewById(R.id.edTxtFechaNac)
         edTxtTelefono = findViewById(R.id.edTxtTelefono)
         edTxtMail = findViewById(R.id.edTxtMail)
         edTxtDireccion = findViewById(R.id.edTxtDireccion)
 
+        // Botones
         btnOk = findViewById(R.id.btnOk)
         btnInicio = findViewById(R.id.btnInicio)
         btnCerrar = findViewById(R.id.btnCerrar)
+    }
+
+    private fun configurarSpinners() {
+        // ELIMINAR toda la configuración del Spinner de Tipo que ya no existe
+
+        // Adaptador para el Spinner de Tipo Socio
+        val adapterTipoSocio = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposSocio)
+        adapterTipoSocio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTipoSocio.adapter = adapterTipoSocio
+
+        // Adaptador para el Spinner de Tipo Documento
+        val adapterTipoDoc = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposDocumento)
+        adapterTipoDoc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTipoDoc.adapter = adapterTipoDoc
+
+        // ELIMINAR el listener del Spinner de Tipo que ya no existe
+
+        // Listener para el Spinner de Tipo Socio
+        spinnerTipoSocio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
+                // Aquí puedes manejar la selección si es necesario
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No hacer nada
+            }
+        }
+
+        // Listener para el Spinner de Tipo Documento
+        spinnerTipoDoc.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
+                // Aquí puedes manejar la selección si es necesario
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No hacer nada
+            }
+        }
     }
 
     private fun configurarBotones() {
@@ -131,24 +147,39 @@ class RegistrarSocioActivity : AppCompatActivity() {
             guardarSocio()
         }
 
-        // Botón Inicio - Volver al inicio
+        // Botón Inicio - Confirmar antes de salir
         btnInicio.setOnClickListener {
-            finish() // o la lógica para volver a la actividad principal
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirmar Salida")
+            builder.setMessage("¿Está seguro de que desea salir del registro de socio?")
+
+            builder.setPositiveButton("Sí, Salir") { dialog, which ->
+                val intent = Intent(this, PantallaPrincipalActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            builder.setNegativeButton("No, Quedarse") { dialog, which ->
+                // No hacer nada, permanecer en la actividad
+            }
+
+            val dialog = builder.create()
+            dialog.show()
         }
 
-        // Botón Cerrar - Limpiar campos o cerrar
+        // Botón Cerrar - Limpiar campos
         btnCerrar.setOnClickListener {
             limpiarCampos()
         }
     }
 
     private fun guardarSocio() {
-        // Obtener los valores de los EditText
-        val tipo = edTxtTipo.text.toString().trim()
-        val tipoSocio = edTxtTipoSocio.text.toString().trim()
+        // Obtener los valores de los Spinners y EditText
+        val tipo = "Fijo" // Valor fijo ya que eliminamos el Spinner de Tipo
+        val tipoSocio = spinnerTipoSocio.selectedItem.toString()
+        val tipoDoc = spinnerTipoDoc.selectedItem.toString()
         val nombre = edTxtNombre.text.toString().trim()
         val apellido = edTxtApellido.text.toString().trim()
-        val tipoDoc = edTxtTipoDoc.text.toString().trim()
         val nroDoc = edTxtNroDoc.text.toString().trim()
         val fechaNac = edTxtFechaNac.text.toString().trim()
         val telefono = edTxtTelefono.text.toString().trim()
@@ -158,11 +189,19 @@ class RegistrarSocioActivity : AppCompatActivity() {
         // Validar campos obligatorios
         if (nombre.isEmpty()) {
             mostrarMensaje("El nombre es obligatorio")
+            edTxtNombre.requestFocus()
+            return
+        }
+
+        if (apellido.isEmpty()) {
+            mostrarMensaje("El apellido es obligatorio")
+            edTxtApellido.requestFocus()
             return
         }
 
         if (nroDoc.isEmpty()) {
             mostrarMensaje("El número de documento es obligatorio")
+            edTxtNroDoc.requestFocus()
             return
         }
 
@@ -174,13 +213,16 @@ class RegistrarSocioActivity : AppCompatActivity() {
             )
 
             if (resultado != -1L) {
-                mostrarMensaje("Socio guardado correctamente")
+                // GUARDAR EL ID LOCALMENTE
+                idSocioActual = resultado.toInt()
+                mostrarMensaje("Socio guardado correctamente - ID: $idSocioActual")
 
-                // Esperar un poco para que se vea el mensaje y luego ir a la lista
+                // Esperar un poco para que se vea el mensaje y luego ir al APTO FÍSICO
                 Handler(Looper.getMainLooper()).postDelayed({
-                    val intent = Intent(this, ListaSocioActivity::class.java)
+                    val intent = Intent(this, AptoFisicoActivity::class.java)
+                    intent.putExtra("socio_id", idSocioActual)
                     startActivity(intent)
-                    finish() // Opcional
+                    finish() // Cierra esta actividad
                 }, 1000) // 1 segundo de delay
             } else {
                 mostrarMensaje("Error al guardar el socio")
@@ -191,28 +233,23 @@ class RegistrarSocioActivity : AppCompatActivity() {
     }
 
     private fun limpiarCampos() {
-        edTxtTipo.setText("")
-        edTxtTipoSocio.setText("")
+        // Resetear Spinners (solo los que existen)
+        spinnerTipoSocio.setSelection(0)
+        spinnerTipoDoc.setSelection(0)
+
+        // Limpiar EditTexts
         edTxtNombre.setText("")
         edTxtApellido.setText("")
-        edTxtTipoDoc.setText("")
         edTxtNroDoc.setText("")
         edTxtFechaNac.setText("")
         edTxtTelefono.setText("")
         edTxtMail.setText("")
         edTxtDireccion.setText("")
 
-        // Opcional: restaurar los hints si es necesario
-        edTxtTipo.hint = "Tipo"
-        edTxtTipoSocio.hint = "Socio / No Socio"
-        edTxtNombre.hint = "Nombre"
-        edTxtApellido.hint = "Apellido"
-        edTxtTipoDoc.hint = "DNI"
-        edTxtNroDoc.hint = "Número"
-        edTxtFechaNac.hint = "Fecha Nac."
-        edTxtTelefono.hint = "Teléfono"
-        edTxtMail.hint = "Mail"
-        edTxtDireccion.hint = "Dirección"
+        idSocioActual = -1
+
+        // Enfocar el primer campo
+        edTxtNombre.requestFocus()
     }
 
     private fun mostrarMensaje(mensaje: String) {
@@ -223,15 +260,4 @@ class RegistrarSocioActivity : AppCompatActivity() {
         dbHelper.close()
         super.onDestroy()
     }
-=======
-      btnAptoFisico.setOnClickListener {
-         val intentAptoFisico= Intent(this, AptoFisicoActivity::class.java)
-         /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-         startActivity(intentAptoFisico)
-
-        /* Toast.makeText("contexto", "complete los campos",5)*/
-      }
->>>>>>> 33a2d9d11d6bbfdc138365bd32e00314154d2d38
-
-
 }

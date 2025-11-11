@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 // Clase para administrar la BBDD
 // Tenemos que pasar 4 argumentos, el contexto(this), el nombre de la BBDD, factory(hace referencia al cursor) y la version de la BBDD
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 3) {
+class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 5) {
 
     // Función para crear la base de datos
     override fun onCreate(db: SQLiteDatabase) {
@@ -31,12 +31,31 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 3)
         )
 
         android.util.Log.d("DB_CREATE", "Tabla socios creada exitosamente")
+
+        db.execSQL(
+            "CREATE TABLE aptos_fisicos (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "socio_id INTEGER NOT NULL, " +
+                    "fecha_vencimiento TEXT NOT NULL, " +
+                    "medico_nombre TEXT NOT NULL, " +
+                    "medico_apellido TEXT NOT NULL, " +
+                    "medico_matricula TEXT NOT NULL, " +
+                    "es_apto INTEGER NOT NULL, " +  // 1 = Sí, 0 = No
+                    "fecha_creacion TEXT NOT NULL, " +
+                    "FOREIGN KEY (socio_id) REFERENCES socios(id) ON DELETE CASCADE)"
+        )
+
+        android.util.Log.d("DB_CREATE", "Tablas creadas exitosamente")
     }
 
     // Funcion para actualizar la BBDD, solo se ejecuta cuando cambiamos la version
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+
+        android.util.Log.d("DB_UPGRADE", "Actualizando BD de v$oldVersion a v$newVersion")
         // Elimina la tabla
         db.execSQL("DROP TABLE IF EXISTS socios")
+        db.execSQL("DROP TABLE IF EXISTS aptos_fisicos")
+
         // Vuelve a crear la tabla
         onCreate(db)
     }
@@ -143,6 +162,108 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 3)
     }
 
 
+    // Método para insertar un apto físico
+    fun agregarAptoFisico(
+        socioId: Int,
+        fechaVencimiento: String,
+        medicoNombre: String,
+        medicoApellido: String,
+        medicoMatricula: String,
+        esApto: Boolean
+    ): Long {
+        val db = this.writableDatabase
+        var resultado: Long = -1
+
+        try {
+            val values = ContentValues().apply {
+                put("socio_id", socioId)
+                put("fecha_vencimiento", fechaVencimiento)
+                put("medico_nombre", medicoNombre)
+                put("medico_apellido", medicoApellido)
+                put("medico_matricula", medicoMatricula)
+                put("es_apto", if (esApto) 1 else 0)
+                put("fecha_creacion", System.currentTimeMillis().toString())
+            }
+
+            resultado = db.insert("aptos_fisicos", null, values)
+
+            android.util.Log.d("DB_DEBUG", "Insert apto físico result: $resultado")
+
+        } catch (e: Exception) {
+            android.util.Log.e("DB_ERROR", "Error inserting apto físico: ${e.message}", e)
+            e.printStackTrace()
+        } finally {
+            db.close()
+        }
+        return resultado
+    }
+
+    // Método para obtener aptos físicos de un socio
+    fun obtenerAptosFisicosPorSocio(socioId: Int): ArrayList<AptoFisico> {
+        val listaAptos = ArrayList<AptoFisico>()
+        val db = this.readableDatabase
+
+        val cursor = db.rawQuery(
+            "SELECT * FROM aptos_fisicos WHERE socio_id = ? ORDER BY fecha_creacion DESC",
+            arrayOf(socioId.toString())
+        )
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    val apto = AptoFisico(
+                        id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                        socioId = cursor.getInt(cursor.getColumnIndexOrThrow("socio_id")),
+                        fechaVencimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_vencimiento")),
+                        medicoNombre = cursor.getString(cursor.getColumnIndexOrThrow("medico_nombre")),
+                        medicoApellido = cursor.getString(cursor.getColumnIndexOrThrow("medico_apellido")),
+                        medicoMatricula = cursor.getString(cursor.getColumnIndexOrThrow("medico_matricula")),
+                        esApto = cursor.getInt(cursor.getColumnIndexOrThrow("es_apto")) == 1,
+                        fechaCreacion = cursor.getString(cursor.getColumnIndexOrThrow("fecha_creacion"))
+                    )
+                    listaAptos.add(apto)
+                } while (cursor.moveToNext())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return listaAptos
+    }
+
+    // Método para obtener el último apto físico de un socio
+    fun obtenerUltimoAptoFisico(socioId: Int): AptoFisico? {
+        val db = this.readableDatabase
+        var apto: AptoFisico? = null
+
+        val cursor = db.rawQuery(
+            "SELECT * FROM aptos_fisicos WHERE socio_id = ? ORDER BY fecha_creacion DESC LIMIT 1",
+            arrayOf(socioId.toString())
+        )
+
+        try {
+            if (cursor.moveToFirst()) {
+                apto = AptoFisico(
+                    id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                    socioId = cursor.getInt(cursor.getColumnIndexOrThrow("socio_id")),
+                    fechaVencimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_vencimiento")),
+                    medicoNombre = cursor.getString(cursor.getColumnIndexOrThrow("medico_nombre")),
+                    medicoApellido = cursor.getString(cursor.getColumnIndexOrThrow("medico_apellido")),
+                    medicoMatricula = cursor.getString(cursor.getColumnIndexOrThrow("medico_matricula")),
+                    esApto = cursor.getInt(cursor.getColumnIndexOrThrow("es_apto")) == 1,
+                    fechaCreacion = cursor.getString(cursor.getColumnIndexOrThrow("fecha_creacion"))
+                )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return apto
+    }
 
 
 }
