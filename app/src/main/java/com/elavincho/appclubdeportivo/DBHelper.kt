@@ -491,6 +491,47 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6)
     }
 
 
+    // Método para actualizar un socio existente
+    fun actualizarSocio(socio: Socio): Boolean {
+        val db = this.writableDatabase
+        var resultado = false
+
+        try {
+            val values = ContentValues().apply {
+                put("tipo", socio.tipo)
+                put("tipo_socio", socio.tipoSocio)
+                put("nombre", socio.nombre)
+                put("apellido", socio.apellido)
+                put("tipo_doc", socio.tipoDoc)
+                put("nro_doc", socio.nroDoc)
+                put("fecha_nac", socio.fechaNac)
+                put("telefono", socio.telefono)
+                put("mail", socio.mail)
+                put("direccion", socio.direccion)
+            }
+
+            val filasAfectadas = db.update(
+                "socios",
+                values,
+                "id = ?",
+                arrayOf(socio.id.toString())
+            )
+
+            resultado = filasAfectadas > 0
+
+            android.util.Log.d("DB_DEBUG", "Update socio result: $resultado, filas afectadas: $filasAfectadas")
+
+        } catch (e: Exception) {
+            android.util.Log.e("DB_ERROR", "Error updating socio: ${e.message}", e)
+            e.printStackTrace()
+        } finally {
+            db.close()
+        }
+        return resultado
+    }
+
+
+
     /* *********************************************************** */
 
 

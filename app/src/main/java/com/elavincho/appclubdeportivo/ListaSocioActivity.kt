@@ -160,14 +160,29 @@ class ListaSocioActivity : AppCompatActivity() {
     }
 
     private fun editarSocio(socio: Socio) {
-        // Por ahora mostramos un Toast, luego puedes implementar la edición
-        Toast.makeText(this, "Editar socio: ${socio.nombre} ${socio.apellido}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, EditarSocioActivity::class.java).apply {
+            putExtra("socio_id", socio.id)
+        }
+        // Usamos startActivityForResult para recibir el resultado
+        startActivityForResult(intent, REQUEST_EDITAR_SOCIO)
+    }
 
-        // Para implementar en el futuro:
-        // val intent = Intent(this, EditarSocioActivity::class.java).apply {
-        //     putExtra("socio_id", socio.id)
-        // }
-        // startActivity(intent)
+    // Constante para identificar la solicitud
+    companion object {
+        private const val REQUEST_EDITAR_SOCIO = 1001
+    }
+
+    // Manejar el resultado cuando se edita un socio
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_EDITAR_SOCIO) {
+            if (resultCode == RESULT_OK) {
+                // Recargar la lista de socios
+                cargarSocios()
+                Toast.makeText(this, "Socio actualizado correctamente", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun verComprobantesSocio(socio: Socio) {

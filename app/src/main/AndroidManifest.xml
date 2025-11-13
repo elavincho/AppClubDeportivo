@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppClubDeportivo">
         <activity
+            android:name=".EditarSocioActivity"
+            android:exported="false" />
+        <activity
             android:name=".ComprobantesSocioActivity"
             android:exported="false" />
         <activity
