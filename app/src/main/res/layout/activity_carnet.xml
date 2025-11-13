@@ -19,12 +19,11 @@
         android:layout_marginBottom="0dp"
         android:orientation="vertical">
 
-
         <!-- Texto: CARNET -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80sp"
+            android:layout_marginTop="30sp"
             android:gravity="center"
             android:text="CARNET"
             android:textColor="@android:color/holo_blue_dark"
@@ -32,120 +31,171 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <GridLayout
+        <!-- Input para número de socio -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
+            android:layout_marginTop="30dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNumeroSocio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese número de socio"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textSize="16sp" />
 
-                android:orientation="horizontal">
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Texto: Socio-->
-                <TextView
-                    android:layout_width="110dp"
+        <!-- Botón Buscar Socio -->
+        <Button
+            android:id="@+id/btnBuscarSocio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#2196F3"
+            android:text="Buscar Socio"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- Información del Socio (inicialmente oculta) -->
+        <LinearLayout
+            android:id="@+id/layoutInfoSocio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="30dp">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="1"
+                android:columnOrderPreserved="false"
+                android:rowCount="1"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Socio"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
+                    android:orientation="horizontal">
 
-                <!-- Texto: Número-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Número"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </GridLayout>
+                    <!-- Texto: Socio-->
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="60dp"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_text_input"
+                        android:padding="10dp"
+                        android:text="Socio"
+                        android:textColor="@android:color/secondary_text_dark"
+                        android:textSize="15sp"
+                        tools:ignore="HardcodedText" />
 
-        <!-- Texto: Condición -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Condición"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+                    <!-- Texto: Número-->
+                    <TextView
+                        android:id="@+id/tvNumeroSocio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_text_input"
+                        android:padding="10dp"
+                        android:text="Número"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </GridLayout>
 
-        <!-- Texto: Nombre -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Nombre"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            <!-- Texto: Condición -->
+            <TextView
+                android:id="@+id/tvCondicion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_text_input"
+                android:padding="15dp"
+                android:text="Condición"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
-        <!-- Texto: Android -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Apellido"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            <!-- Texto: Nombre -->
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_text_input"
+                android:padding="15dp"
+                android:text="Nombre"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
-        <!-- Texto: Actividad -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Actividad"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            <!-- Texto: Apellido -->
+            <TextView
+                android:id="@+id/tvApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_text_input"
+                android:padding="15dp"
+                android:text="Apellido"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
-        <!-- Texto: Fecha Venc. -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Fecha Venc."
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            <!-- Texto: Actividad -->
+            <TextView
+                android:id="@+id/tvActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_text_input"
+                android:padding="15dp"
+                android:text="Actividad"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
 
-        <!-- Botón Generar Carnet -->
+            <!-- Texto: Fecha Venc. Apto Físico -->
+            <TextView
+                android:id="@+id/tvFechaVencimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_text_input"
+                android:padding="15dp"
+                android:text="Fecha Venc. Apto"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <!-- Botón Generar Carnet (inicialmente oculto) -->
         <Button
             android:id="@+id/btnGenerarCarnet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="#00FF66"
             android:text="Generar Carnet"
             android:textColor="@android:color/black"
             android:textSize="25sp"
+            android:visibility="gone"
             tools:ignore="HardcodedText" />
 
         <LinearLayout

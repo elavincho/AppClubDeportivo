@@ -4,12 +4,16 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 
 // Clase para administrar la BBDD
 // Tenemos que pasar 4 argumentos, el contexto(this), el nombre de la BBDD, factory(hace referencia al cursor) y la version de la BBDD
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 5) {
+class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6) {
 
     // Función para crear la base de datos
     override fun onCreate(db: SQLiteDatabase) {
@@ -46,6 +50,23 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 5)
         )
 
         android.util.Log.d("DB_CREATE", "Tablas creadas exitosamente")
+
+        db.execSQL(
+            "CREATE TABLE comprobantes_pago (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "fecha TEXT NOT NULL, " +
+                    "numero_socio TEXT NOT NULL, " +
+                    "nombre TEXT NOT NULL, " +
+                    "apellido TEXT NOT NULL, " +
+                    "actividad TEXT NOT NULL, " +
+                    "fecha_vencimiento TEXT NOT NULL, " +
+                    "metodo_pago TEXT NOT NULL, " +
+                    "cuota TEXT NOT NULL, " +
+                    "importe TEXT NOT NULL, " +
+                    "fecha_creacion TEXT NOT NULL)"
+        )
+
+        android.util.Log.d("DB_CREATE", "Todas las tablas creadas exitosamente")
     }
 
     // Funcion para actualizar la BBDD, solo se ejecuta cuando cambiamos la version
@@ -264,6 +285,213 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 5)
         }
         return apto
     }
+
+    // Método para insertar un nuevo comprobante
+    fun agregarComprobante(comprobante: ComprobantePago): Long {
+        val db = this.writableDatabase
+        var resultado: Long = -1
+
+        try {
+            val values = ContentValues().apply {
+                put("fecha", comprobante.fecha)
+                put("numero_socio", comprobante.numeroSocio)
+                put("nombre", comprobante.nombre)
+                put("apellido", comprobante.apellido)
+                put("actividad", comprobante.actividad)
+                put("fecha_vencimiento", comprobante.fechaVencimiento)
+                put("metodo_pago", comprobante.metodoPago)
+                put("cuota", comprobante.cuota)
+                put("importe", comprobante.importe)
+                put("fecha_creacion", System.currentTimeMillis().toString())
+            }
+
+            resultado = db.insert("comprobantes_pago", null, values)
+
+            android.util.Log.d("DB_DEBUG", "Insert comprobante result: $resultado")
+            android.util.Log.d("DB_DEBUG", "Comprobante values: $values")
+
+        } catch (e: Exception) {
+            android.util.Log.e("DB_ERROR", "Error inserting comprobante: ${e.message}", e)
+            e.printStackTrace()
+        } finally {
+            db.close()
+        }
+        return resultado
+    }
+
+    // Método para obtener todos los comprobantes
+    fun obtenerTodosLosComprobantes(): ArrayList<ComprobantePago> {
+        val listaComprobantes = ArrayList<ComprobantePago>()
+        val db = this.readableDatabase
+        val cursor =
+            db.rawQuery("SELECT * FROM comprobantes_pago ORDER BY fecha_creacion DESC", null)
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    val comprobante = ComprobantePago(
+                        id = cursor.getLong(cursor.getColumnIndexOrThrow("id")),
+                        fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                        numeroSocio = cursor.getString(cursor.getColumnIndexOrThrow("numero_socio")),
+                        nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                        apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                        actividad = cursor.getString(cursor.getColumnIndexOrThrow("actividad")),
+                        fechaVencimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_vencimiento")),
+                        metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
+                        cuota = cursor.getString(cursor.getColumnIndexOrThrow("cuota")),
+                        importe = cursor.getString(cursor.getColumnIndexOrThrow("importe")),
+                        fechaCreacion = Date(
+                            cursor.getString(cursor.getColumnIndexOrThrow("fecha_creacion"))
+                                .toLong()
+                        )
+                    )
+                    listaComprobantes.add(comprobante)
+                } while (cursor.moveToNext())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return listaComprobantes
+    }
+
+    // Método para obtener un comprobante por ID
+    fun obtenerComprobantePorId(id: Long): ComprobantePago? {
+        val db = this.readableDatabase
+        var comprobante: ComprobantePago? = null
+
+        val cursor = db.rawQuery(
+            "SELECT * FROM comprobantes_pago WHERE id = ?",
+            arrayOf(id.toString())
+        )
+
+        try {
+            if (cursor.moveToFirst()) {
+                comprobante = ComprobantePago(
+                    id = cursor.getLong(cursor.getColumnIndexOrThrow("id")),
+                    fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha")),
+                    numeroSocio = cursor.getString(cursor.getColumnIndexOrThrow("numero_socio")),
+                    nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                    apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                    actividad = cursor.getString(cursor.getColumnIndexOrThrow("actividad")),
+                    fechaVencimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_vencimiento")),
+                    metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago")),
+                    cuota = cursor.getString(cursor.getColumnIndexOrThrow("cuota")),
+                    importe = cursor.getString(cursor.getColumnIndexOrThrow("importe")),
+                    fechaCreacion = Date(
+                        cursor.getString(cursor.getColumnIndexOrThrow("fecha_creacion")).toLong()
+                    )
+                )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return comprobante
+    }
+
+    // Método para verificar la estructura de la tabla comprobantes
+    fun verificarEstructuraTablaComprobantes() {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("PRAGMA table_info(comprobantes_pago)", null)
+
+        val columnas = ArrayList<String>()
+        if (cursor.moveToFirst()) {
+            do {
+                val nombreColumna = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                val tipoColumna = cursor.getString(cursor.getColumnIndexOrThrow("type"))
+                columnas.add("$nombreColumna ($tipoColumna)")
+                android.util.Log.d(
+                    "DB_STRUCTURE",
+                    "Comprobantes - Columna: $nombreColumna - Tipo: $tipoColumna"
+                )
+            } while (cursor.moveToNext())
+        } else {
+            android.util.Log.d("DB_STRUCTURE", "La tabla comprobantes_pago no existe")
+        }
+        cursor.close()
+        db.close()
+
+        android.util.Log.d("DB_STRUCTURE", "Total columnas comprobantes: ${columnas.size}")
+    }
+
+    // Método para obtener la última actividad de un socio desde los comprobantes
+    fun obtenerUltimaActividadSocio(socioId: Int): String {
+        val db = this.readableDatabase
+        var ultimaActividad = "Sin actividad registrada"
+
+        val cursor = db.rawQuery(
+            "SELECT actividad FROM comprobantes_pago WHERE numero_socio = ? ORDER BY fecha_creacion DESC LIMIT 1",
+            arrayOf(socioId.toString())
+        )
+
+        try {
+            if (cursor.moveToFirst()) {
+                ultimaActividad = cursor.getString(cursor.getColumnIndexOrThrow("actividad"))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return ultimaActividad
+    }
+
+
+    // Método específico para obtener socios con vencimientos hoy
+    fun obtenerSociosConVencimientoHoy(): List<Socio> {
+        val db = this.readableDatabase
+        val socios = mutableListOf<Socio>()
+
+        val fechaHoy = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+
+        val query = """
+        SELECT DISTINCT s.* 
+        FROM socios s
+        INNER JOIN comprobantes_pago cp ON s.id = cp.numero_socio
+        WHERE cp.fecha_vencimiento = ? 
+        AND s.tipo_socio = 'Socio'
+        AND cp.cuota LIKE '%Mensual%'
+        ORDER BY s.apellido, s.nombre
+    """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(fechaHoy))
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    val socio = Socio(
+                        id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                        tipo = cursor.getString(cursor.getColumnIndexOrThrow("tipo")),
+                        tipoSocio = cursor.getString(cursor.getColumnIndexOrThrow("tipo_socio")),
+                        nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                        apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                        tipoDoc = cursor.getString(cursor.getColumnIndexOrThrow("tipo_doc")),
+                        nroDoc = cursor.getString(cursor.getColumnIndexOrThrow("nro_doc")),
+                        fechaNac = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac")),
+                        telefono = cursor.getString(cursor.getColumnIndexOrThrow("telefono")),
+                        mail = cursor.getString(cursor.getColumnIndexOrThrow("mail")),
+                        direccion = cursor.getString(cursor.getColumnIndexOrThrow("direccion"))
+                    )
+                    socios.add(socio)
+                } while (cursor.moveToNext())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return socios
+    }
+
+
+    /* *********************************************************** */
 
 
 }

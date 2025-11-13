@@ -4,16 +4,20 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class SocioAdapter(private val socios: List<Socio>) :
-    RecyclerView.Adapter<SocioAdapter.SocioViewHolder>() {
+class SocioAdapter(
+    private val socios: List<Socio>,
+    private val onMenuClickListener: (Socio, Int) -> Unit
+) : RecyclerView.Adapter<SocioAdapter.SocioViewHolder>() {
 
     class SocioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtSocioNumero: TextView = itemView.findViewById(R.id.txtSocioNumero)
         val txtNombreCompleto: TextView = itemView.findViewById(R.id.txtNombreCompleto)
         val txtDocumento: TextView = itemView.findViewById(R.id.txtDocumento)
+        val btnMenuSocio: ImageView = itemView.findViewById(R.id.btnMenuSocio)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SocioViewHolder {
@@ -29,16 +33,17 @@ class SocioAdapter(private val socios: List<Socio>) :
         holder.txtNombreCompleto.text = "${socio.nombre} ${socio.apellido}"
         holder.txtDocumento.text = "${socio.tipoDoc}: ${socio.nroDoc}"
 
-        // Hacer el item clickeable - navegar a DetalleSocioActivity
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetalleSocioActivity::class.java)
-            intent.putExtra("socio_id", socio.id)
-            holder.itemView.context.startActivity(intent)
+        // Configurar el clic del menú
+        holder.btnMenuSocio.setOnClickListener {
+            onMenuClickListener(socio, position)
         }
 
+        // Opcional: hacer que el item completo sea clickeable para ver datos
+        holder.itemView.setOnClickListener {
+            // Puedes abrir los datos directamente al hacer clic en el item
+            // onMenuClickListener(socio, position)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return socios.size
-    }
+    override fun getItemCount(): Int = socios.size
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_ver_datos"
+        android:title="Ver Datos Socio"
+        android:icon="@drawable/ic_visibility" />
+
+    <item
+        android:id="@+id/menu_editar"
+        android:title="Editar"
+        android:icon="@drawable/ic_edit" />
+
+    <item
+        android:id="@+id/menu_ver_comprobantes"
+        android:title="Ver Comprobantes Pago"
+        android:icon="@drawable/ic_receipt" />
+
+</menu>

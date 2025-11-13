@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFF6FF"
     android:orientation="vertical"
-    tools:context=".VencimientosActivity">
+    android:background="#DFF6FF">
 
     <!-- Header -->
     <LinearLayout
@@ -16,11 +15,19 @@
         android:background="@color/white"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Volver"
+            android:padding="8dp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Vencimientos Hoy"
+            android:text="Comprobantes de Pago"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -36,47 +43,33 @@
 
     </LinearLayout>
 
-    <!-- Fecha actual -->
+    <!-- Información del Socio -->
     <TextView
-        android:id="@+id/txtFecha"
+        android:id="@+id/tvInfoSocio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_text_input"
         android:padding="12dp"
-        android:text="Fecha: "
+        android:text="Socio: "
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_margin="16dp" />
 
-    <!-- Contador de vencimientos -->
-    <TextView
-        android:id="@+id/txtContadorVencimientos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_text_input"
-        android:padding="12dp"
-        android:text="Socios con vencimiento hoy: 0"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Lista de socios con vencimientos -->
+    <!-- Lista de Comprobantes -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewVencimientos"
+        android:id="@+id/recyclerViewComprobantes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="8dp" />
 
-    <!-- Mensaje cuando no hay vencimientos -->
+    <!-- Mensaje si no hay comprobantes -->
     <TextView
-        android:id="@+id/txtMensajeVacio"
+        android:id="@+id/tvMensajeVacio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🎉 No hay socios con vencimientos hoy"
-        android:textSize="18sp"
+        android:text="No hay comprobantes de pago para este socio"
+        android:textSize="16sp"
         android:gravity="center"
         android:padding="32dp"
         android:visibility="gone" />

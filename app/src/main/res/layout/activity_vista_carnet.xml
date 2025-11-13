@@ -17,8 +17,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
-        tools:context=".VencimientosActivity">
-
+        tools:context=".VistaCarnetActivity">
 
         <!-- Texto: CARNET -->
         <TextView
@@ -45,6 +44,7 @@
 
             <!-- Imagen: img_usuario -->
             <ImageView
+                android:id="@+id/imgFotoSocio"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:contentDescription="carnet"
@@ -61,46 +61,47 @@
 
                 <!-- Texto: Socio Número-->
                 <TextView
+                    android:id="@+id/tvSocioNumero"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_columnWeight="1"
                     android:padding="10dp"
                     android:text="Socio Número"
-                    android:textColor="@android:color/secondary_text_dark"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"
+                    android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </GridLayout>
 
-
-
-
         <!-- Texto: Nombre -->
         <TextView
+            android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
             android:text="Nombre"
-            android:textColor="@android:color/secondary_text_dark"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
         <!-- Texto: Apellido -->
         <TextView
+            android:id="@+id/tvApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
             android:text="Apellido"
-            android:textColor="@android:color/secondary_text_dark"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
-             <GridLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -117,53 +118,59 @@
                 android:layout_columnWeight="1"
                 android:orientation="horizontal">
 
-                <!-- Texto: Método de pago-->
+                <!-- Texto: Tipo Socio-->
                 <TextView
+                    android:id="@+id/tvTipoSocio"
                     android:layout_width="150dp"
                     android:layout_height="60dp"
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
                     android:padding="10dp"
-                    android:text="Socio"
-                    android:textColor="@android:color/secondary_text_dark"
+                    android:text="Tipo Socio"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"
+                    android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
-                <!-- Texto: Cuota -->
+                <!-- Texto: Condición -->
                 <TextView
+                    android:id="@+id/tvCondicion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_columnWeight="1"
                     android:background="@drawable/bg_text_input"
                     android:padding="10dp"
-                    android:text="No Socio"
-                    android:textColor="@android:color/secondary_text_dark"
+                    android:text="Condición"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"
+                    android:textStyle="bold"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
         </GridLayout>
 
         <!-- Texto: Actividad -->
         <TextView
+            android:id="@+id/tvActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
             android:text="Actividad"
-            android:textColor="@android:color/secondary_text_dark"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
-        <!-- Texto: Fecha Venc. -->
+        <!-- Texto: Fecha Venc. Apto Físico -->
         <TextView
+            android:id="@+id/tvFechaVencimiento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
-            android:text="Fecha Venc."
-            android:textColor="@android:color/secondary_text_dark"
+            android:text="Fecha Venc. Apto"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
@@ -222,7 +229,7 @@
             android:id="@+id/btnVolverVerCarnet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="100dp"
             android:backgroundTint="#92C5FC"
             android:text="Volver"
             android:textColor="@android:color/white"

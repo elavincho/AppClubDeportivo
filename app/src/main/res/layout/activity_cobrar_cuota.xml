@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,19 +12,19 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
         tools:context=".CobrarCuotaActivity">
 
-
         <!-- Texto: COBRAR CUOTA -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="COBRAR CUOTA"
             android:textColor="@android:color/holo_blue_dark"
@@ -33,11 +32,12 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <!-- Texto: Fecha -->
+        <!-- Fecha actual -->
         <TextView
+            android:id="@+id/txtFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
             android:text="Fecha"
@@ -45,210 +45,166 @@
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
-        <GridLayout
+        <!-- Selección de Tipo de Socio -->
+        <Spinner
+            android:id="@+id/spinnerTipoSocio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:orientation="horizontal">
-
-                <!-- Texto: Socio-->
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Socio"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-
-                <!-- Texto: Número-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Número"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </GridLayout>
-
-        <!-- Texto: Nombre -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_text_input"
             android:padding="15dp"
-            android:text="Nombre"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
-        <!-- Texto: Apellido -->
-        <TextView
+        <!-- Buscar Socio por Número -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Apellido"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            android:layout_marginTop="15dp"
 
-        <!-- Texto: Tipo -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Tipo"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            app:boxStrokeColor="#286AB4"
+            app:hintTextColor="#286AB4">
 
-        <!-- Texto: Actividad -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Actividad"
-            android:textColor="@android:color/secondary_text_dark"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNumeroSocio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de Socio"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textSize="18sp" />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:orientation="horizontal">
-
-                <!-- Texto: Método de pago-->
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Método de pago"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-
-                <!-- Texto: Importe-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Importe"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </GridLayout>
-
-
-        <!-- Botón Generar Comprobante -->
+        <!-- Botón Buscar Socio -->
         <Button
-            android:id="@+id/btnGenerarComprobante"
+            android:id="@+id/btnBuscarSocio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#24CC99"
-            android:text="Generar Comprobante"
-            android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#286AB4"
+            android:text="Buscar Socio"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- Información del Socio -->
+        <TextView
+            android:id="@+id/txtInfoSocio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Seleccione un socio"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <!-- Selección de Actividad -->
+        <Spinner
+            android:id="@+id/spinnerActividad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
+        <!-- Método de Pago -->
+        <Spinner
+            android:id="@+id/spinnerMetodoPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Importe -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:boxStrokeColor="#286AB4"
+            app:hintTextColor="#286AB4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtImporte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Importe"
+                android:inputType="numberDecimal"
+                android:padding="15dp"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Vencimiento -->
+        <TextView
+            android:id="@+id/txtVencimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_input"
+            android:padding="15dp"
+            android:text="Vencimiento: --/--/----"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+
+        <!-- Botón Cobrar Cuota -->
+        <Button
+            android:id="@+id/btnCobrarCuota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#24CC99"
+            android:text="Cobrar Cuota"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Barra inferior -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">
 
-            <!-- Espacio flexible entre imágenes -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <!-- Imagen: img_delete -->
             <ImageView
                 android:id="@+id/btnCerrar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:contentDescription="casa"
+                android:contentDescription="limpiar"
                 android:scaleType="centerCrop"
-                android:src="@drawable/delete"
-                tools:ignore="HardcodedText" />
+                android:src="@drawable/delete" />
 
-            <!-- Espacio flexible entre imágenes -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <!-- Imagen: img_inicio -->
             <ImageView
                 android:id="@+id/btnInicio"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:contentDescription="casa"
+                android:contentDescription="inicio"
                 android:scaleType="centerCrop"
-                android:src="@drawable/casa"
-                tools:ignore="HardcodedText" />
+                android:src="@drawable/casa" />
 
-            <!-- Espacio flexible entre imágenes -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- Imagen: img_tick_approve -->
-            <ImageView
-                android:id="@+id/btnOk"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="casa"
-                android:scaleType="centerCrop"
-                android:src="@drawable/tick_approve"
-                tools:ignore="HardcodedText" />
-
-            <!-- Espacio flexible entre imágenes -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -256,5 +212,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

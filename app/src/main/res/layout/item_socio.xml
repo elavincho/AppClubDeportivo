@@ -49,4 +49,19 @@
             android:layout_marginTop="2dp" />
 
     </LinearLayout>
+
+    <!-- Botón de menú con tres puntitos -->
+    <ImageView
+        android:id="@+id/btnMenuSocio"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Menú de opciones"
+        android:scaleType="centerInside"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/navegacion" />
+
 </LinearLayout>
