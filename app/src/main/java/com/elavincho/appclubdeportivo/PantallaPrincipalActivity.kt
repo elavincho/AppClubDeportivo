@@ -53,13 +53,13 @@ class PantallaPrincipalActivity : AppCompatActivity() {
 
         /*Botón Inicio (img_casa)*/
 
-        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
-
-        btnInicio.setOnClickListener {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intentPantallaPrincipal)
-        }
+//        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
+//
+//        btnInicio.setOnClickListener {
+//            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
+//            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
+//            startActivity(intentPantallaPrincipal)
+//        }
 
         /*Botón Cobrar Cuota*/
 
