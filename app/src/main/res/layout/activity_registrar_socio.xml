@@ -6,217 +6,305 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DFF6FF"
-    android:backgroundTintMode="screen"
     android:orientation="vertical"
     tools:context=".RegistrarSocioActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical">
 
-        <!-- Texto: REGISTRO SOCIOS-->
-        <TextView
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Volver"
+                android:padding="8dp" />
+
+            <!-- Texto: REGISTRO SOCIOS-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:text="REGISTRO SOCIOS"
+                android:textColor="#286AB4"
+                android:fontFamily="@font/montserrat"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:text="REGISTRO SOCIOS"
-            android:textColor="#286AB4"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
+            android:layout_marginBottom="16dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <!-- TextView: Tipo -->
-                <TextView
-                    android:id="@+id/txtTipo"
-                    android:layout_width="110dp"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="TIPO"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
-
-                <!-- Spinner: Tipo Socio -->
-                <Spinner
-                    android:id="@+id/spinnerTipoSocio"
+                <!-- Tipo de Socio (Socio/No Socio) -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </GridLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
 
-        <!-- EditText: Nombre -->
-        <EditText
-            android:id="@+id/edTxtNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:padding="20dp"
-            android:hint="Nombre"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="1"
+                        android:columnOrderPreserved="false"
+                        android:rowCount="1"
+                        android:rowOrderPreserved="false"
+                        android:useDefaultMargins="true">
 
-        <!-- EditText: Apellido -->
-        <EditText
-            android:id="@+id/edTxtApellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:padding="20dp"
-            android:hint="Apellido"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_columnWeight="1"
+                            android:orientation="horizontal">
 
+                            <!-- TextView: Tipo -->
+                            <TextView
+                                android:id="@+id/txtTipo"
+                                android:layout_width="110dp"
+                                android:layout_height="60dp"
+                                android:layout_columnWeight="1"
+                                android:background="@drawable/bg_text_input"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="TIPO:"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText" />
 
+                            <!-- Spinner: Tipo Socio -->
+                            <Spinner
+                                android:id="@+id/spinnerTipoSocio"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_columnWeight="1"
+                                android:background="@drawable/bg_text_input"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:textColor="@android:color/secondary_text_dark"
+                                android:textSize="15sp"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                    </GridLayout>
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:orientation="horizontal">
-
-                <!-- Spinner: Tipo de Documento -->
-                <Spinner
-                    android:id="@+id/spinnerTipoDoc"
-                    android:layout_width="110dp"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
-
-                <!-- EditText: Número de Documento -->
-                <EditText
-                    android:id="@+id/edTxtNroDoc"
+                <!-- Nombre -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTxtNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:hint="Nombre"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Apellido -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTxtApellido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:hint="Apellido"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="1"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="1"
+                    android:rowOrderPreserved="false"
+                    android:useDefaultMargins="true">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_columnWeight="1"
+                        android:orientation="horizontal">
+
+                        <!-- Spinner: Tipo de Documento -->
+                        <Spinner
+                            android:id="@+id/spinnerTipoDoc"
+                            android:layout_width="110dp"
+                            android:layout_height="60dp"
+                            android:layout_columnWeight="1"
+                            android:background="@drawable/bg_text_input"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textColor="@android:color/secondary_text_dark"
+                            android:textSize="15sp"
+                            tools:ignore="HardcodedText" />
+
+                        <!-- Número Documento -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="16dp"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edTxtNroDoc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_text_input"
+                                android:hint="Número Documento"
+                                android:inputType="number"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </GridLayout>
+
+                <!-- Fecha Nacimiento -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edTxtFechaNac"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
                     android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:hint="Número de Documento"
-                    android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="15sp"
-                    tools:ignore="HardcodedText" />
+                    android:hint="Fecha Nacimiento (dd/mm/aaaa)"
+                    android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Teléfono -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTxtTelefono"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:hint="Teléfono"
+                        android:inputType="phone"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTxtMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Dirección -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edTxtDireccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:hint="Dirección"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
-        </GridLayout>
-
-        <!-- EditText: Fecha Nac. -->
-        <EditText
-            android:id="@+id/edTxtFechaNac"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="text"
-            android:padding="20dp"
-            android:hint="Fecha Nac. (DD/MM/AAAA)"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <!-- EditText: Teléfono -->
-        <EditText
-            android:id="@+id/edTxtTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="phone"
-            android:padding="20dp"
-            android:hint="Teléfono"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <!-- EditText: Mail -->
-        <EditText
-            android:id="@+id/edTxtMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="textEmailAddress"
-            android:padding="20dp"
-            android:hint="Email"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <!-- EditText: Dirección -->
-        <EditText
-            android:id="@+id/edTxtDireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:fontFamily="@font/instrument_sans"
-            android:inputType="textPostalAddress"
-            android:padding="20dp"
-            android:hint="Dirección"
-            android:textColor="#7C000000"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
+        </androidx.cardview.widget.CardView>
 
         <!-- Botón Apto Físico -->
         <Button
@@ -255,22 +343,6 @@
                 android:contentDescription="casa"
                 android:scaleType="centerCrop"
                 android:src="@drawable/delete"
-                tools:ignore="HardcodedText" />
-
-            <!-- Espacio flexible entre imágenes -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- Imagen: img_inicio -->
-            <ImageView
-                android:id="@+id/btnInicio"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="casa"
-                android:scaleType="centerCrop"
-                android:src="@drawable/casa"
                 tools:ignore="HardcodedText" />
 
             <!-- Espacio flexible entre imágenes -->

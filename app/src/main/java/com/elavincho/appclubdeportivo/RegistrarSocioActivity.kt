@@ -33,6 +33,8 @@ class RegistrarSocioActivity : AppCompatActivity() {
     private lateinit var btnInicio: ImageView
     private lateinit var btnCerrar: ImageView
 
+    private lateinit var btnBack: ImageView
+
     // Arrays para los Spinners
     private val tiposSocio = arrayOf("Socio", "No Socio")
     private val tiposDocumento = arrayOf("DNI", "Cédula", "Pasaporte", "LC", "LE")
@@ -46,13 +48,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        /*Botón Inicio (img_casa)*/
-//        val btnInicio = findViewById<ImageView>(R.id.btnInicio)
-//        btnInicio.setOnClickListener {
-//            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-//            startActivity(intentPantallaPrincipal)
-//        }
 
         /*Botón Apto Físico*/
         val btnAptoFisico = findViewById<Button>(R.id.btnAptoFisico)
@@ -101,10 +96,10 @@ class RegistrarSocioActivity : AppCompatActivity() {
         btnOk = findViewById(R.id.btnOk)
         btnInicio = findViewById(R.id.btnInicio)
         btnCerrar = findViewById(R.id.btnCerrar)
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun configurarSpinners() {
-        // ELIMINAR toda la configuración del Spinner de Tipo que ya no existe
 
         // Adaptador para el Spinner de Tipo Socio
         val adapterTipoSocio = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposSocio)
@@ -115,8 +110,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
         val adapterTipoDoc = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposDocumento)
         adapterTipoDoc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipoDoc.adapter = adapterTipoDoc
-
-        // ELIMINAR el listener del Spinner de Tipo que ya no existe
 
         // Listener para el Spinner de Tipo Socio
         spinnerTipoSocio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -147,35 +140,35 @@ class RegistrarSocioActivity : AppCompatActivity() {
             guardarSocio()
         }
 
-        // Botón Inicio - Confirmar antes de salir
-        btnInicio.setOnClickListener {
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+
+        // Botón Cerrar - Confirmar antes de salir
+        btnCerrar.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Confirmar Salida")
             builder.setMessage("¿Está seguro de que desea salir del registro de socio?")
 
-            builder.setPositiveButton("Sí, Salir") { dialog, which ->
+            builder.setPositiveButton("Salir") { dialog, which ->
                 val intent = Intent(this, PantallaPrincipalActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
-            builder.setNegativeButton("No, Quedarse") { dialog, which ->
+            builder.setNegativeButton("Cancelar") { dialog, which ->
                 // No hacer nada, permanecer en la actividad
             }
 
             val dialog = builder.create()
             dialog.show()
         }
-
-        // Botón Cerrar - Limpiar campos
-        btnCerrar.setOnClickListener {
-            limpiarCampos()
-        }
     }
 
     private fun guardarSocio() {
         // Obtener los valores de los Spinners y EditText
-        val tipo = "Fijo" // Valor fijo ya que eliminamos el Spinner de Tipo
+        val tipo = "TIPO:" // Valor fijo ya que eliminamos el Spinner de Tipo
         val tipoSocio = spinnerTipoSocio.selectedItem.toString()
         val tipoDoc = spinnerTipoDoc.selectedItem.toString()
         val nombre = edTxtNombre.text.toString().trim()
@@ -205,6 +198,30 @@ class RegistrarSocioActivity : AppCompatActivity() {
             return
         }
 
+        if (fechaNac.isEmpty()) {
+            mostrarMensaje("La fecha de nacimiento es obligatoria")
+            edTxtFechaNac.requestFocus()
+            return
+        }
+
+        if (telefono.isEmpty()) {
+            mostrarMensaje("El teléfono es obligatorio")
+            edTxtTelefono.requestFocus()
+            return
+        }
+
+        if (mail.isEmpty()) {
+            mostrarMensaje("El mail es obligatorio")
+            edTxtMail.requestFocus()
+            return
+        }
+
+        if (direccion.isEmpty()) {
+            mostrarMensaje("La dirección es obligatoria")
+            edTxtDireccion.requestFocus()
+            return
+        }
+
         // Insertar en la base de datos
         try {
             val resultado = dbHelper.agregarSocio(
@@ -230,26 +247,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
         } catch (e: Exception) {
             mostrarMensaje("Error: ${e.message}")
         }
-    }
-
-    private fun limpiarCampos() {
-        // Resetear Spinners (solo los que existen)
-        spinnerTipoSocio.setSelection(0)
-        spinnerTipoDoc.setSelection(0)
-
-        // Limpiar EditTexts
-        edTxtNombre.setText("")
-        edTxtApellido.setText("")
-        edTxtNroDoc.setText("")
-        edTxtFechaNac.setText("")
-        edTxtTelefono.setText("")
-        edTxtMail.setText("")
-        edTxtDireccion.setText("")
-
-        idSocioActual = -1
-
-        // Enfocar el primer campo
-        edTxtNombre.requestFocus()
     }
 
     private fun mostrarMensaje(mensaje: String) {
