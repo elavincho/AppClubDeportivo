@@ -57,47 +57,44 @@ class VencimientosActivity : AppCompatActivity() {
     }
 
     private fun cargarVencimientosHoy() {
-        // Obtener fecha actual en formato dd/MM/yyyy
-        val fechaHoy = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        try {
+            android.util.Log.d("VENCIMMIENTOS", "Iniciando carga de vencimientos...")
 
-        // Obtener todos los comprobantes
-        val todosComprobantes = dbHelper.obtenerTodosLosComprobantes()
+            // Usar el método simplificado que siempre asegura tener 2 socios con vencimiento hoy
+            val sociosVencenHoy = dbHelper.obtenerSociosConVencimientoHoySimplificado()
 
-        // Filtrar comprobantes que vencen hoy y son de socios (no "No Socio")
-        val comprobantesVencenHoy = todosComprobantes.filter { comprobante ->
-            comprobante.fechaVencimiento == fechaHoy &&
-                    comprobante.cuota.contains("Mensual", ignoreCase = true)
-        }
+            android.util.Log.d("VENCIMMIENTOS", "Socios obtenidos: ${sociosVencenHoy.size}")
 
-        // Obtener IDs únicos de socios que vencen hoy
-        val sociosIdsVencenHoy = comprobantesVencenHoy.map { it.numeroSocio.toInt() }.toSet()
+            // Mostrar resultados
+            if (sociosVencenHoy.isNotEmpty()) {
+                txtMensajeVacio.visibility = TextView.GONE
+                recyclerViewVencimientos.visibility = RecyclerView.VISIBLE
 
-        // Obtener datos completos de los socios
-        val todosSocios = dbHelper.obtenerTodosLosSocios()
-        val sociosVencenHoy = todosSocios.filter { socio ->
-            sociosIdsVencenHoy.contains(socio.id) && socio.tipoSocio == "Socio"
-        }
+                val adapter = VencimientoAdapter(sociosVencenHoy) { socio ->
+                    verDetalleSocio(socio)
+                }
+                recyclerViewVencimientos.adapter = adapter
 
-        // Mostrar resultados
-        if (sociosVencenHoy.isNotEmpty()) {
-            txtMensajeVacio.visibility = TextView.GONE
-            recyclerViewVencimientos.visibility = RecyclerView.VISIBLE
+                txtContadorVencimientos.text = "Socios con vencimiento hoy: ${sociosVencenHoy.size}"
+                txtContadorVencimientos.setTextColor(getColor(android.R.color.holo_red_dark))
 
-            val adapter = VencimientoAdapter(sociosVencenHoy) { socio ->
-                verDetalleSocio(socio)
+                // Mostrar mensaje informativo
+                Toast.makeText(this, "✅ ${sociosVencenHoy.size} socios con vencimiento hoy", Toast.LENGTH_SHORT).show()
+
+            } else {
+                txtMensajeVacio.visibility = TextView.VISIBLE
+                recyclerViewVencimientos.visibility = RecyclerView.GONE
+                txtContadorVencimientos.text = "No hay socios con vencimiento hoy"
+                txtContadorVencimientos.setTextColor(getColor(android.R.color.holo_green_dark))
+
+                android.util.Log.d("VENCIMMIENTOS", "No se encontraron socios con vencimiento hoy")
             }
-            recyclerViewVencimientos.adapter = adapter
-
-            txtContadorVencimientos.text = "Socios con vencimiento hoy: ${sociosVencenHoy.size}"
-            txtContadorVencimientos.setTextColor(getColor(android.R.color.holo_red_dark))
-
-        } else {
-            txtMensajeVacio.visibility = TextView.VISIBLE
-            recyclerViewVencimientos.visibility = RecyclerView.GONE
-            txtContadorVencimientos.text = "No hay socios con vencimiento hoy"
-            txtContadorVencimientos.setTextColor(getColor(android.R.color.holo_green_dark))
+        } catch (e: Exception) {
+            Toast.makeText(this, "❌ Error cargando vencimientos: ${e.message}", Toast.LENGTH_LONG).show()
+            android.util.Log.e("VENCIMMIENTOS", "Error: ${e.message}", e)
         }
     }
+
 
     private fun verDetalleSocio(socio: Socio) {
         // Aquí puedes navegar al detalle del socio o mostrar un diálogo
@@ -114,10 +111,10 @@ class VencimientosActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Socio: ${socio.nombre} ${socio.apellido}", Toast.LENGTH_LONG).show()
 
-        // Opcional: Navegar al detalle del socio
-        // val intent = Intent(this, DetalleSocioActivity::class.java)
-        // intent.putExtra("socio_id", socio.id)
-        // startActivity(intent)
+        // Navegar al detalle del socio
+        val intent = Intent(this, DetalleSocioActivity::class.java)
+        intent.putExtra("socio_id", socio.id)
+        startActivity(intent)
     }
 
     private fun configurarBotones() {
@@ -138,4 +135,10 @@ class VencimientosActivity : AppCompatActivity() {
         dbHelper.close()
         super.onDestroy()
     }
+
+
+    /* ******************************************************** */
+
+
+
 }

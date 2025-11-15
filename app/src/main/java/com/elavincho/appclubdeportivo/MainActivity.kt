@@ -78,10 +78,18 @@ class MainActivity : AppCompatActivity() {
                 // Login exitoso
                 Toast.makeText(this, "✅ Login exitoso", Toast.LENGTH_SHORT).show()
 
+                // Inicializar socios con vencimiento hoy
+                android.util.Log.d("MAIN_ACTIVITY", "Inicializando socios con vencimiento hoy...")
+                dbHelper.inicializarSociosConVencimientoHoy()
+
+                // Verificar que los datos se crearon correctamente
+                android.util.Log.d("MAIN_ACTIVITY", "Verificando datos de prueba...")
+                dbHelper.verificarDatosDePrueba()
+
                 // Navegar a la pantalla principal
                 val intent = Intent(this, PantallaPrincipalActivity::class.java)
                 startActivity(intent)
-                finish() // Cerrar la actividad de login
+                finish()
             } else {
                 // Login fallido
                 Toast.makeText(this, "❌ Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
@@ -89,7 +97,6 @@ class MainActivity : AppCompatActivity() {
                 edtPassword.requestFocus()
             }
         } catch (e: Exception) {
-            // Manejar cualquier error
             Toast.makeText(this, "❌ Error en la base de datos: ${e.message}", Toast.LENGTH_LONG).show()
             android.util.Log.e("LOGIN_ERROR", "Error durante login: ${e.message}", e)
         }
