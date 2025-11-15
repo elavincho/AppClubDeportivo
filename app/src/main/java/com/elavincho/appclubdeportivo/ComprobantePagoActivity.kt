@@ -18,16 +18,17 @@ class ComprobantePagoActivity : AppCompatActivity() {
     private var socioId: Int = 0
     private var socioNombre: String = ""
     private var socioApellido: String = ""
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_comprobante_pago)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Inicializar DBHelper (el mismo que usas en CobrarCuotaActivity)
         dbHelper = DBHelper(this)
@@ -88,33 +89,11 @@ class ComprobantePagoActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvMetodoPago).text = comprobante.metodoPago
         findViewById<TextView>(R.id.tvCuota).text = comprobante.cuota
         findViewById<TextView>(R.id.tvImporte).text = comprobante.importe
-
-        // Opcional: Cambiar el texto del botón según el origen
-        val btnVolver = findViewById<Button>(R.id.btnVolverCobrarCuota)
-        if (vieneDeLista) {
-            btnVolver.text = "Volver a Comprobantes"
-        } else {
-            btnVolver.text = "Volver a Cobrar Cuota"
-        }
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun configurarBotonVolver() {
-        val btnVolver = findViewById<Button>(R.id.btnVolverCobrarCuota)
-
-        btnVolver.setOnClickListener {
-            if (vieneDeLista) {
-                // Volver a la lista de comprobantes del socio
-                val intent = Intent(this, ComprobantesSocioActivity::class.java).apply {
-                    putExtra("socio_id", socioId)
-                    putExtra("socio_nombre", socioNombre)
-                    putExtra("socio_apellido", socioApellido)
-                }
-                startActivity(intent)
-            } else {
-                // Volver a cobrar cuota (comportamiento original)
-                val intent = Intent(this, CobrarCuotaActivity::class.java)
-                startActivity(intent)
-            }
+        btnBack.setOnClickListener {
             finish()
         }
     }
@@ -125,9 +104,11 @@ class ComprobantePagoActivity : AppCompatActivity() {
             try {
                 val id = dbHelper.agregarComprobante(comprobante)
                 if (id != -1L) {
-                    Toast.makeText(this, "Comprobante guardado correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Comprobante guardado correctamente", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
-                    Toast.makeText(this, "Error al guardar el comprobante", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error al guardar el comprobante", Toast.LENGTH_SHORT)
+                        .show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
