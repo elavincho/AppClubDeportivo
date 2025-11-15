@@ -29,24 +29,25 @@ class AptoFisicoActivity : AppCompatActivity() {
    private lateinit var btnClip: ImageView
    private lateinit var btnOk: ImageView
    private lateinit var btnCerrar: ImageView
-   private lateinit var btnInicio: ImageView
+
+   private lateinit var btnBack: ImageView
 
    // Variable para controlar el estado del apto físico
    private var esApto: Boolean = true
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
-      enableEdgeToEdge()
+      //enableEdgeToEdge()
       setContentView(R.layout.activity_apto_fisico)
 
       // INICIALIZAR DBHelper PRIMERO
       dbHelper = DBHelper(this)
 
-      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-         insets
-      }
+//      ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//         val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//         insets
+//      }
 
       // Obtener el ID del socio desde el intent
       socioId = intent.getIntExtra("socio_id", -1)
@@ -79,7 +80,7 @@ class AptoFisicoActivity : AppCompatActivity() {
       btnClip = findViewById(R.id.btnClip)
       btnOk = findViewById(R.id.btnOk)
       btnCerrar = findViewById(R.id.btnCerrar)
-      btnInicio = findViewById(R.id.btnInicio)
+      btnBack = findViewById(R.id.btnBack)
 
       // Configurar estado inicial del botón
       actualizarBotonApto()
@@ -97,13 +98,13 @@ class AptoFisicoActivity : AppCompatActivity() {
          guardarAptoFisico()
       }
 
-      // Botón Cerrar - Limpiar campos
-      btnCerrar.setOnClickListener {
-         limpiarCampos()
+      // Botón Atras
+      btnBack.setOnClickListener {
+         finish()
       }
 
-      // Botón Inicio - Confirmar antes de salir
-      btnInicio.setOnClickListener {
+      // Botón Cerrar - Confirmar antes de salir
+      btnCerrar.setOnClickListener {
          val builder = AlertDialog.Builder(this)
          builder.setTitle("Confirmar Salida")
          builder.setMessage("¿Está seguro de que desea salir del apto físico?")
@@ -216,20 +217,6 @@ class AptoFisicoActivity : AppCompatActivity() {
          mostrarMensaje("Error: ${e.message}")
          android.util.Log.e("APTO_DEBUG", "Error guardando apto: ${e.message}")
       }
-   }
-
-   private fun limpiarCampos() {
-      edTxtFechaVencimiento.setText("")
-      edTxtMedicoNombre.setText("")
-      edTxtMedicoApellido.setText("")
-      edTxtMedicoMatricula.setText("")
-
-      // Resetear estado a "Es Apto"
-      esApto = true
-      actualizarBotonApto()
-
-      // Enfocar el primer campo
-      edTxtFechaVencimiento.requestFocus()
    }
 
    private fun mostrarMensaje(mensaje: String) {

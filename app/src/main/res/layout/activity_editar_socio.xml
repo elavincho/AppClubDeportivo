@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFF6FF"
-    android:padding="16dp">
+    android:background="#DFF6FF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,23 +12,45 @@
         android:orientation="vertical">
 
         <!-- Header -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Editar Socio"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:layout_marginBottom="24dp" />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Volver"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <!-- Texto: EDITAR SOCIO-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="EDITAR SOCIO"
+                android:textColor="#286AB4"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- Información Básica Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="16dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,30 +61,30 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Información Básica"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
+                    android:textStyle="bold" />
 
                 <!-- Tipo de Socio -->
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginBottom="16dp"-->
-<!--                    app:boxBackgroundMode="outline"-->
-<!--                    app:boxCornerRadiusBottomEnd="8dp"-->
-<!--                    app:boxCornerRadiusBottomStart="8dp"-->
-<!--                    app:boxCornerRadiusTopEnd="8dp"-->
-<!--                    app:boxCornerRadiusTopStart="8dp">-->
+                <!--                <com.google.android.material.textfield.TextInputLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginBottom="16dp"-->
+                <!--                    app:boxBackgroundMode="outline"-->
+                <!--                    app:boxCornerRadiusBottomEnd="8dp"-->
+                <!--                    app:boxCornerRadiusBottomStart="8dp"-->
+                <!--                    app:boxCornerRadiusTopEnd="8dp"-->
+                <!--                    app:boxCornerRadiusTopStart="8dp">-->
 
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/edtTipo"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="Tipo (Persona/Empresa)"-->
-<!--                        android:textSize="16sp" />-->
+                <!--                    <com.google.android.material.textfield.TextInputEditText-->
+                <!--                        android:id="@+id/edtTipo"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:hint="Tipo (Persona/Empresa)"-->
+                <!--                        android:textSize="16sp" />-->
 
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
+                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <!-- Tipo de Socio (Socio/No Socio) -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -132,9 +153,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="16dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,10 +168,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Documentación"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
+                    android:textStyle="bold" />
 
                 <!-- Tipo Documento -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -218,9 +241,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="16dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -231,10 +256,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Información de Contacto"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
+                    android:textStyle="bold" />
 
                 <!-- Teléfono -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -306,32 +331,49 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            tools:ignore="UselessLeaf">
 
-            <Button
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_delete -->
+            <ImageView
                 android:id="@+id/btnCancelar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancelar"
-                android:textSize="16sp"
-                android:backgroundTint="#F44336"
-                android:textColor="@android:color/white"
-                android:layout_marginEnd="8dp" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/delete"
+                tools:ignore="HardcodedText" />
 
-            <Button
+            <!-- Espacio flexible entre imágenes -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Imagen: img_tick_approve -->
+            <ImageView
                 android:id="@+id/btnGuardar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="casa"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tick_approve"
+                tools:ignore="HardcodedText" />
+
+            <!-- Espacio flexible entre imágenes -->
+            <View
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Guardar Cambios"
-                android:textSize="16sp"
-                android:backgroundTint="#4CAF50"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="8dp" />
-
+                android:layout_height="0dp"
+                android:layout_weight="1" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

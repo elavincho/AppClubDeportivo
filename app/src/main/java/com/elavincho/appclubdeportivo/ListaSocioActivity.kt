@@ -17,7 +17,8 @@ class ListaSocioActivity : AppCompatActivity() {
     private lateinit var dbHelper: DBHelper
     private lateinit var recyclerViewSocios: RecyclerView
     private lateinit var txtFecha: TextView
-    private lateinit var btnInicio: ImageView
+    //private lateinit var btnInicio: ImageView
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,7 @@ class ListaSocioActivity : AppCompatActivity() {
 
     private fun inicializarVistas() {
         recyclerViewSocios = findViewById(R.id.recyclerViewSocios)
-        //txtFecha = findViewById(R.id.txtFecha) // Comentado si no lo usas
-        btnInicio = findViewById(R.id.btnInicio)
+        btnBack = findViewById(R.id.btnBack)
 
         // Configurar RecyclerView
         recyclerViewSocios.layoutManager = LinearLayoutManager(this)
@@ -50,11 +50,9 @@ class ListaSocioActivity : AppCompatActivity() {
 
         if (listaSocios.isEmpty()) {
             // Mostrar mensaje si no hay socios
-            // Si tienes un TextView para mensajes, úsalo aquí
-            // txtFecha.text = "No hay socios registrados"
             Toast.makeText(this, "No hay socios registrados", Toast.LENGTH_SHORT).show()
         } else {
-            // Usar el nuevo adaptador con el listener del menú
+            // Usar el adaptador con el listener del menú
             val adapter = SocioAdapter(listaSocios) { socio, position ->
                 mostrarMenuSocio(socio, position)
             }
@@ -106,31 +104,6 @@ class ListaSocioActivity : AppCompatActivity() {
         }
     }
 
-//    private fun verDatosSocio(socio: Socio) {
-//        val mensaje = """
-//            📋 **Datos del Socio**
-//
-//            🆔 **Número:** ${socio.id}
-//            👤 **Nombre:** ${socio.nombre} ${socio.apellido}
-//            📄 **${socio.tipoDoc}:** ${socio.nroDoc}
-//            🎂 **Fecha Nacimiento:** ${socio.fechaNac}
-//            📞 **Teléfono:** ${socio.telefono}
-//            📧 **Email:** ${socio.mail}
-//            🏠 **Dirección:** ${socio.direccion}
-//            🏷️ **Tipo Socio:** ${socio.tipoSocio}
-//            👥 **Tipo:** ${socio.tipo}
-//        """.trimIndent()
-//
-//        AlertDialog.Builder(this)
-//            .setTitle("Datos del Socio")
-//            .setMessage(mensaje)
-//            .setPositiveButton("Aceptar", null)
-//            .setNeutralButton("Compartir") { dialog, which ->
-//                compartirDatosSocio(socio)
-//            }
-//            .show()
-//    }
-
     private fun verDatosSocio(socio: Socio) {
         val intent = Intent(this, DetalleSocioActivity::class.java).apply {
             putExtra("socio_id", socio.id)
@@ -139,24 +112,6 @@ class ListaSocioActivity : AppCompatActivity() {
             putExtra("socio_apellido", socio.apellido)
         }
         startActivity(intent)
-    }
-
-    private fun compartirDatosSocio(socio: Socio) {
-        val textoCompartir = """
-            Datos del Socio:
-            Número: ${socio.id}
-            Nombre: ${socio.nombre} ${socio.apellido}
-            ${socio.tipoDoc}: ${socio.nroDoc}
-            Teléfono: ${socio.telefono}
-            Email: ${socio.mail}
-        """.trimIndent()
-
-        val intent = android.content.Intent().apply {
-            action = android.content.Intent.ACTION_SEND
-            putExtra(android.content.Intent.EXTRA_TEXT, textoCompartir)
-            type = "text/plain"
-        }
-        startActivity(android.content.Intent.createChooser(intent, "Compartir datos del socio"))
     }
 
     private fun editarSocio(socio: Socio) {
@@ -195,21 +150,10 @@ class ListaSocioActivity : AppCompatActivity() {
     }
 
     private fun configurarBotones() {
-        btnInicio.setOnClickListener {
-            // Agregar confirmación antes de salir
-            mostrarConfirmacionSalir()
-        }
-    }
 
-    private fun mostrarConfirmacionSalir() {
-        AlertDialog.Builder(this)
-            .setTitle("Confirmar Salida")
-            .setMessage("¿Está seguro que desea volver al menú principal?")
-            .setPositiveButton("Sí, Salir") { dialog, which ->
-                finish() // Volver a la actividad anterior
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
+        btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onResume() {

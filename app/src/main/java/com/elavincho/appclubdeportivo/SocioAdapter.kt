@@ -29,7 +29,7 @@ class SocioAdapter(
     override fun onBindViewHolder(holder: SocioViewHolder, position: Int) {
         val socio = socios[position]
 
-        holder.txtSocioNumero.text = "Socio Número: ${socio.id}"
+        holder.txtSocioNumero.text = "${socio.tipoSocio} N° ${socio.id}"
         holder.txtNombreCompleto.text = "${socio.nombre} ${socio.apellido}"
         holder.txtDocumento.text = "${socio.tipoDoc}: ${socio.nroDoc}"
 

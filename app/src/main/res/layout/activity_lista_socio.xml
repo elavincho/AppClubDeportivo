@@ -12,37 +12,39 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical"
         tools:context=".ListaSocioActivity">
 
-        <!-- Texto: LISTA DE SOCIOS -->
-        <TextView
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:gravity="center"
-            android:text="LISTA DE SOCIOS"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-        <!-- Texto: Fecha -->
-<!--        <TextView-->
-<!--            android:id="@+id/txtFecha"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="50sp"-->
-<!--            android:background="@drawable/bg_text_input"-->
-<!--            android:padding="15dp"-->
-<!--            android:text="Fecha"-->
-<!--            android:textColor="@android:color/secondary_text_dark"-->
-<!--            android:textSize="20sp"-->
-<!--            tools:ignore="HardcodedText" />-->
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Volver"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <!-- Texto: LISTA DE SOCIOS / NO SOCIOS-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="LISTA DE SOCIOS / NO SOCIOS"
+                android:textColor="#286AB4"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- RecyclerView para la lista de socios -->
         <androidx.recyclerview.widget.RecyclerView
@@ -52,38 +54,6 @@
             android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/bg_boton_acceder"
-            android:orientation="horizontal"
-            tools:ignore="UselessLeaf">
-
-            <!-- Espacio flexible entre imágenes -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- Imagen: img_inicio -->
-            <ImageView
-                android:id="@+id/btnInicio"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="casa"
-                android:scaleType="centerCrop"
-                android:src="@drawable/casa"
-                tools:ignore="HardcodedText" />
-
-            <!-- Espacio flexible entre imágenes -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

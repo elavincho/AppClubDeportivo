@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +33,8 @@ class DetalleSocioActivity : AppCompatActivity() {
     private lateinit var txtMatricula: TextView
 
     private lateinit var btnGestionarApto: Button
-    private lateinit var btnVolver: Button
+
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +73,6 @@ class DetalleSocioActivity : AppCompatActivity() {
         txtTelefono = findViewById(R.id.txtTelefono)
         txtEmail = findViewById(R.id.txtEmail)
         txtDireccion = findViewById(R.id.txtDireccion)
-        //txtTipo = findViewById(R.id.txtTipo)
         txtTipoSocio = findViewById(R.id.txtTipoSocio)
 
         // TextViews del apto físico
@@ -82,7 +83,7 @@ class DetalleSocioActivity : AppCompatActivity() {
 
         // Botones
         btnGestionarApto = findViewById(R.id.btnGestionarApto)
-        btnVolver = findViewById(R.id.btnVolver)
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun cargarDatosSocio() {
@@ -102,7 +103,6 @@ class DetalleSocioActivity : AppCompatActivity() {
         txtTelefono.text = socio.telefono
         txtEmail.text = socio.mail
         txtDireccion.text = socio.direccion
-        //txtTipo.text = socio.tipo
         txtTipoSocio.text = socio.tipoSocio
     }
 
@@ -140,8 +140,8 @@ class DetalleSocioActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Botón Volver
-        btnVolver.setOnClickListener {
+        // Botón Atras
+        btnBack.setOnClickListener {
             finish()
         }
     }

@@ -13,32 +13,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical">
 
-        <!-- Texto: APTO FÍSICO -->
-        <TextView
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:text="APTO FÍSICO"
-            android:textColor="#286AB4"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Volver"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <!-- Texto: APTO FÍSICO-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="APTO FÍSICO"
+                android:textColor="#286AB4"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- Estado Apto/No Apto -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -72,6 +84,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="date"
@@ -100,6 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="textPersonName"
@@ -115,6 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="textPersonName"
@@ -130,6 +148,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:background="@drawable/bg_text_input"
             android:fontFamily="@font/instrument_sans"
             android:inputType="number"
@@ -144,6 +164,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/bg_boton_acceder"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">
@@ -159,25 +181,9 @@
                 android:id="@+id/btnCerrar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:contentDescription="limpiar campos"
+                android:contentDescription="salir"
                 android:scaleType="centerCrop"
                 android:src="@drawable/delete"
-                tools:ignore="HardcodedText" />
-
-            <!-- Espacio flexible entre imágenes -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- Imagen: img_inicio -->
-            <ImageView
-                android:id="@+id/btnInicio"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="ir al inicio"
-                android:scaleType="centerCrop"
-                android:src="@drawable/casa"
                 tools:ignore="HardcodedText" />
 
             <!-- Espacio flexible entre imágenes -->

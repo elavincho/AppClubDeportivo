@@ -3,6 +3,7 @@ package com.elavincho.appclubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -24,8 +25,9 @@ class EditarSocioActivity : AppCompatActivity() {
     private lateinit var edtTelefono: TextInputEditText
     private lateinit var edtEmail: TextInputEditText
     private lateinit var edtDireccion: TextInputEditText
-    private lateinit var btnCancelar: Button
-    private lateinit var btnGuardar: Button
+    private lateinit var btnCancelar: ImageView
+    private lateinit var btnGuardar: ImageView
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +67,7 @@ class EditarSocioActivity : AppCompatActivity() {
         edtDireccion = findViewById(R.id.edtDireccion)
         btnCancelar = findViewById(R.id.btnCancelar)
         btnGuardar = findViewById(R.id.btnGuardar)
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun cargarDatosSocio() {
@@ -97,6 +100,11 @@ class EditarSocioActivity : AppCompatActivity() {
 
         btnGuardar.setOnClickListener {
             guardarCambios()
+        }
+
+        // Botón Atras
+        btnBack.setOnClickListener {
+            finish()
         }
     }
 
@@ -189,17 +197,13 @@ class EditarSocioActivity : AppCompatActivity() {
     private fun mostrarConfirmacionCancelar() {
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle("Confirmar Cancelación")
-            .setMessage("¿Está seguro que desea cancelar? Se perderán los cambios no guardados.")
-            .setPositiveButton("Sí, Cancelar") { dialog, which ->
+            .setMessage("¿Está seguro que desea salir? Se perderán los cambios no guardados.")
+            .setPositiveButton("Salir") { dialog, which ->
                 finish()
             }
             .setNegativeButton("Seguir Editando", null)
             .show()
     }
-
-//    override fun onBackPressed() {
-//        mostrarConfirmacionCancelar()
-//    }
 
     override fun onDestroy() {
         dbHelper.close()

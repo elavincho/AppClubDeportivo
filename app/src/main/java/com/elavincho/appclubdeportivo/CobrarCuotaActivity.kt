@@ -27,9 +27,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
     private lateinit var spinnerMetodoPago: Spinner
     private lateinit var edtImporte: TextInputEditText
     private lateinit var txtVencimiento: TextView
-    //private lateinit var btnCobrarCuota: Button
     private lateinit var btnCerrar: ImageView
-    //private lateinit var btnInicio: ImageView
     private lateinit var btnBack: ImageView
     private lateinit var btnOk: ImageView
 
@@ -42,7 +40,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
     private val PRECIO_SOCIO = 35000.0
     private val PRECIO_NO_SOCIO = 10000.0
     private val DIAS_VENCIMIENTO_SOCIO = 30
-    private val DIAS_VENCIMIENTO_NO_SOCIO = 0 // Vence el mismo día
+    //private val DIAS_VENCIMIENTO_NO_SOCIO = 0 // Vence el mismo día
 
     // Formato de fecha
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -139,13 +137,14 @@ class CobrarCuotaActivity : AppCompatActivity() {
             mostrarConfirmacionSalir()
         }
 
+        // Botón Atras
         btnBack.setOnClickListener {
             finish()
         }
 
     }
 
-    // NUEVO MÉTODO: Mostrar confirmación para salir
+    // MÉTODO: Mostrar confirmación para salir
     private fun mostrarConfirmacionSalir() {
         AlertDialog.Builder(this)
             .setTitle("Confirmar Salida")
