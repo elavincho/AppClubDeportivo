@@ -41,13 +41,13 @@ class RegistrarSocioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_registrar_socio)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         /*Botón Apto Físico*/
         val btnAptoFisico = findViewById<Button>(R.id.btnAptoFisico)
@@ -60,7 +60,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
                 Toast.makeText(this, "Primero guarde el socio para cargar el apto físico", Toast.LENGTH_LONG).show()
             }
         }
-
 
         // Inicializar DBHelper
         dbHelper = DBHelper(this)
@@ -143,7 +142,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             finish()
         }
-
 
         // Botón Cerrar - Confirmar antes de salir
         btnCerrar.setOnClickListener {
