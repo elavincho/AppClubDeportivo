@@ -89,9 +89,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
         spinnerMetodoPago = findViewById(R.id.spinnerMetodoPago)
         edtImporte = findViewById(R.id.edtImporte)
         txtVencimiento = findViewById(R.id.txtVencimiento)
-        //btnCobrarCuota = findViewById(R.id.btnCobrarCuota)
         btnCerrar = findViewById(R.id.btnCerrar)
-        //btnInicio = findViewById(R.id.btnInicio)
         btnBack = findViewById(R.id.btnBack)
         btnOk = findViewById(R.id.btnOk)
     }
@@ -140,11 +138,6 @@ class CobrarCuotaActivity : AppCompatActivity() {
         btnCerrar.setOnClickListener {
             mostrarConfirmacionSalir()
         }
-
-        // Botón Inicio - Con confirmación para salir
-//        btnInicio.setOnClickListener {
-//            mostrarConfirmacionSalir()
-//        }
 
         btnBack.setOnClickListener {
             finish()

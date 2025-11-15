@@ -143,7 +143,7 @@ class CarnetActivity : AppCompatActivity() {
 
             // Cambiar color según estado del apto físico
             if (aptoFisico!!.esApto) {
-                tvFechaVencimiento.setTextColor(Color.GRAY)
+                tvFechaVencimiento.setTextColor(Color.BLACK)
             } else {
                 tvFechaVencimiento.setTextColor(Color.RED)
             }
@@ -155,11 +155,11 @@ class CarnetActivity : AppCompatActivity() {
         // Personalizar colores según tipo de socio
         when (socio.tipoSocio) {
             "Socio" -> {
-                tvCondicion.setTextColor(Color.BLUE)
-                tvCondicion.text = "SOCIO ACTIVO"
+                tvCondicion.setTextColor(Color.BLACK)
+                tvCondicion.text = "SOCIO"
             }
             "No Socio" -> {
-                tvCondicion.setTextColor(Color.GRAY)
+                tvCondicion.setTextColor(Color.BLACK)
                 tvCondicion.text = "NO SOCIO"
             }
             else -> {

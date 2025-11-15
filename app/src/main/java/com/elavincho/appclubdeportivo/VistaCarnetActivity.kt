@@ -26,17 +26,17 @@ class VistaCarnetActivity : AppCompatActivity() {
     private lateinit var tvFechaVencimiento: TextView
     private lateinit var btnDescargar: ImageView
     private lateinit var btnCompartir: ImageView
-    private lateinit var btnVolverVerCarnet: Button
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_vista_carnet)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Inicializar DBHelper
         dbHelper = DBHelper(this)
@@ -61,7 +61,7 @@ class VistaCarnetActivity : AppCompatActivity() {
         tvFechaVencimiento = findViewById(R.id.tvFechaVencimiento)
         btnDescargar = findViewById(R.id.btnDescargar)
         btnCompartir = findViewById(R.id.btnCompartir)
-        btnVolverVerCarnet = findViewById(R.id.btnVolverVerCarnet)
+        btnBack = findViewById(R.id.btnBack)
     }
 
     private fun cargarDatosSocio() {
@@ -83,23 +83,23 @@ class VistaCarnetActivity : AppCompatActivity() {
         val aptoFisico = dbHelper.obtenerUltimoAptoFisico(socioId)
 
         // Mostrar datos en los TextViews
-        tvSocioNumero.text = "Socio N° $socioNumero"
+        tvSocioNumero.text = " N° $socioNumero"
         tvNombre.text = socioNombre
         tvApellido.text = socioApellido
         tvTipoSocio.text = socioTipo
-        tvActividad.text = "Actividad: $socioActividad"
+        tvActividad.text = " $socioActividad"
 
         // Configurar condición y tipo de socio
         when (socioTipo) {
             "Socio" -> {
                 tvCondicion.text = "ACTIVO"
-                //tvCondicion.setTextColor(Color.GREEN)
-                //tvTipoSocio.setTextColor(Color.BLUE)
+                tvCondicion.setTextColor(Color.BLACK)
+                tvTipoSocio.setTextColor(Color.BLACK)
             }
             "No Socio" -> {
                 tvCondicion.text = "VISITANTE"
-                //tvCondicion.setTextColor(Color.GRAY)
-                //tvTipoSocio.setTextColor(Color.DKGRAY)
+                tvCondicion.setTextColor(Color.BLACK)
+                tvTipoSocio.setTextColor(Color.BLACK)
             }
             else -> {
                 tvCondicion.text = socioTipo
@@ -110,16 +110,16 @@ class VistaCarnetActivity : AppCompatActivity() {
 
         // Mostrar información del apto físico
         if (aptoFisico != null) {
-            tvFechaVencimiento.text = "Apto vence: ${aptoFisico.fechaVencimiento}"
+            tvFechaVencimiento.text = " ${aptoFisico.fechaVencimiento}"
             if (aptoFisico.esApto) {
-                //tvFechaVencimiento.setTextColor(Color.GREEN)
+                tvFechaVencimiento.setTextColor(Color.BLACK)
             } else {
-                //tvFechaVencimiento.setTextColor(Color.RED)
-                tvFechaVencimiento.text = "NO APTO - Vence: ${aptoFisico.fechaVencimiento}"
+                tvFechaVencimiento.setTextColor(Color.RED)
+                tvFechaVencimiento.text = " ${aptoFisico.fechaVencimiento}"
             }
         } else {
             tvFechaVencimiento.text = "Sin apto físico registrado"
-            //tvFechaVencimiento.setTextColor(Color.RED)
+            tvFechaVencimiento.setTextColor(Color.RED)
         }
     }
 
@@ -135,10 +135,7 @@ class VistaCarnetActivity : AppCompatActivity() {
             compartirCarnet()
         }
 
-        /* Botón Volver a Ver Carnet */
-        btnVolverVerCarnet.setOnClickListener {
-            val intentVolverVerCarnet = Intent(this, CarnetActivity::class.java)
-            startActivity(intentVolverVerCarnet)
+        btnBack.setOnClickListener {
             finish()
         }
     }

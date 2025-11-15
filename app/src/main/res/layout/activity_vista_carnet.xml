@@ -12,172 +12,295 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="25dp"
         android:orientation="vertical"
         tools:context=".VistaCarnetActivity">
 
-        <!-- Texto: CARNET -->
-        <TextView
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30sp"
-            android:gravity="center"
-            android:text="CARNET"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
-
-            <!-- Imagen: img_usuario -->
             <ImageView
-                android:id="@+id/imgFotoSocio"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:contentDescription="carnet"
-                android:scaleType="centerCrop"
-                android:src="@drawable/usuario"
-                tools:ignore="HardcodedText" />
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Volver"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <!-- Texto: CARNET-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="CARNET"
+                android:textColor="#286AB4"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:background="@drawable/bg_text_input"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <!-- Texto: Socio Número-->
-                <TextView
-                    android:id="@+id/tvSocioNumero"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:padding="10dp"
-                    android:text="Socio Número"
-                    android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-        </GridLayout>
-
-        <!-- Texto: Nombre -->
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Nombre"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <!-- Texto: Apellido -->
-        <TextView
-            android:id="@+id/tvApellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Apellido"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="1"
-            android:columnOrderPreserved="false"
-            android:rowCount="1"
-            android:rowOrderPreserved="false"
-            android:useDefaultMargins="true">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_columnWeight="1"
-                android:orientation="horizontal">
-
-                <!-- Texto: Tipo Socio-->
-                <TextView
-                    android:id="@+id/tvTipoSocio"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Tipo Socio"
-                    android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <!-- Texto: Condición -->
-                <TextView
-                    android:id="@+id/tvCondicion"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_columnWeight="1"
-                    android:background="@drawable/bg_text_input"
-                    android:padding="10dp"
-                    android:text="Condición"
-                    android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="UselessParent">
+
+                    <!-- cardview: esta etiqueta permite redondear la
+                    imagen y darle un tamaño especifico -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="top"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30sp"
+                        app:cardCornerRadius="90dp">
+
+                        <!-- Imagen: logo_club_deportivo -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="logo_club_deportivo"
+                            android:scaleType="centerCrop"
+
+                            android:src="@drawable/icono_club_deportivo"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Texto: CLUB DEPORTIVO -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingTop="35sp"
+                        android:layout_marginLeft="30dp"
+                        android:text="CLUB DEPORTIVO"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                </FrameLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="1"
+                    android:rowOrderPreserved="false"
+                    android:useDefaultMargins="true">
+
+                    <!-- Imagen: img_usuario -->
+                    <ImageView
+                        android:id="@+id/imgFotoSocio"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:contentDescription="carnet"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/usuario"
+                        tools:ignore="HardcodedText" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/bg_text_input"
+                        android:orientation="horizontal">
+
+                        <!-- Texto: Socio Número-->
+                        <TextView
+                            android:id="@+id/tvSocioNumero"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_columnWeight="1"
+                            android:padding="10dp"
+                            android:text="Socio Número"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+
+                </GridLayout>
+
+                <!-- Nombre-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:boxStrokeColor="#286AB4"
+                    app:hintTextColor="#286AB4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:hint="Nombre"
+                        android:inputType="numberDecimal"
+                        android:padding="15dp"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Apellido-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:boxStrokeColor="#286AB4"
+                    app:hintTextColor="#286AB4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvApellido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:enabled="false"
+                        android:hint="Apellido"
+                        android:textColor="@color/black"
+                        android:inputType="numberDecimal"
+                        android:padding="15dp"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                <GridLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:alignmentMode="alignMargins"-->
+<!--                    android:columnCount="1"-->
+<!--                    android:columnOrderPreserved="false"-->
+<!--                    android:rowCount="1"-->
+<!--                    android:rowOrderPreserved="false"-->
+<!--                    android:useDefaultMargins="true">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_columnWeight="1"-->
+<!--                        android:orientation="horizontal">-->
+
+                        <!-- Tipo-->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:boxStrokeColor="#286AB4"
+                            app:hintTextColor="#286AB4">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvTipoSocio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_text_input"
+                                android:enabled="false"
+                                android:hint="Tipo"
+                                android:inputType="numberDecimal"
+                                android:padding="15dp"
+                                android:textSize="20sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Condición-->
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            app:boxStrokeColor="#286AB4"
+                            app:hintTextColor="#286AB4">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tvCondicion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_text_input"
+                                android:enabled="false"
+                                android:hint="Condición"
+                                android:inputType="numberDecimal"
+                                android:padding="15dp"
+                                android:textSize="20sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+<!--                    </LinearLayout>-->
+<!--                </GridLayout>-->
+
+                <!-- Actividad-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:boxStrokeColor="#286AB4"
+                    app:hintTextColor="#286AB4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvActividad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:enabled="false"
+                        android:hint="Actividad"
+                        android:textColor="@color/black"
+                        android:inputType="numberDecimal"
+                        android:padding="15dp"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Fecha Vto Apto Físico-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:boxStrokeColor="#286AB4"
+                    app:hintTextColor="#286AB4">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tvFechaVencimiento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_text_input"
+                        android:enabled="false"
+                        android:hint="Vto. Apto Físico"
+                        android:inputType="numberDecimal"
+                        android:padding="15dp"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-        </GridLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Texto: Actividad -->
-        <TextView
-            android:id="@+id/tvActividad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Actividad"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <!-- Texto: Fecha Venc. Apto Físico -->
-        <TextView
-            android:id="@+id/tvFechaVencimiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:background="@drawable/bg_text_input"
-            android:padding="15dp"
-            android:text="Fecha Venc. Apto"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             tools:ignore="UselessLeaf">
 
@@ -192,11 +315,11 @@
                 android:id="@+id/btnDescargar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/bg_boton_circular"
                 android:contentDescription="descargar"
+                android:padding="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/descargas"
-                android:background="@drawable/bg_boton_circular"
-                android:padding="10dp"
                 tools:ignore="HardcodedText" />
 
             <!-- Espacio flexible entre imágenes -->
@@ -210,11 +333,11 @@
                 android:id="@+id/btnCompartir"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/bg_boton_circular"
                 android:contentDescription="compartir"
+                android:padding="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/compartir"
-                android:padding="10dp"
-                android:background="@drawable/bg_boton_circular"
                 tools:ignore="HardcodedText" />
 
             <!-- Espacio flexible entre imágenes -->
@@ -223,19 +346,5 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
         </LinearLayout>
-
-        <!-- Botón Volver VerCarnet-->
-        <Button
-            android:id="@+id/btnVolverVerCarnet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="#92C5FC"
-            android:text="Volver"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"
-            tools:ignore="HardcodedText" />
-
     </LinearLayout>
-
 </ScrollView>
