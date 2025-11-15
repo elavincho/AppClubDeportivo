@@ -27,9 +27,11 @@ class CobrarCuotaActivity : AppCompatActivity() {
     private lateinit var spinnerMetodoPago: Spinner
     private lateinit var edtImporte: TextInputEditText
     private lateinit var txtVencimiento: TextView
-    private lateinit var btnCobrarCuota: Button
+    //private lateinit var btnCobrarCuota: Button
     private lateinit var btnCerrar: ImageView
-    private lateinit var btnInicio: ImageView
+    //private lateinit var btnInicio: ImageView
+    private lateinit var btnBack: ImageView
+    private lateinit var btnOk: ImageView
 
     // Arrays para los Spinners
     private val tiposSocio = arrayOf("Socio", "No Socio")
@@ -51,13 +53,15 @@ class CobrarCuotaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        //enableEdgeToEdge()  //Habilita el modo "edge-to-edge" donde el contenido va detrás de las barras del sistema
         setContentView(R.layout.activity_cobrar_cuota)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        //Agrega padding automáticamente para evitar que el contenido quede detrás de las barras del sistema
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Inicializar DBHelper
         dbHelper = DBHelper(this)
@@ -85,13 +89,15 @@ class CobrarCuotaActivity : AppCompatActivity() {
         spinnerMetodoPago = findViewById(R.id.spinnerMetodoPago)
         edtImporte = findViewById(R.id.edtImporte)
         txtVencimiento = findViewById(R.id.txtVencimiento)
-        btnCobrarCuota = findViewById(R.id.btnCobrarCuota)
+        //btnCobrarCuota = findViewById(R.id.btnCobrarCuota)
         btnCerrar = findViewById(R.id.btnCerrar)
-        btnInicio = findViewById(R.id.btnInicio)
+        //btnInicio = findViewById(R.id.btnInicio)
+        btnBack = findViewById(R.id.btnBack)
+        btnOk = findViewById(R.id.btnOk)
     }
 
     private fun configurarFecha() {
-        txtFecha.text = "Fecha: $fechaActual"
+        txtFecha.text = " $fechaActual"
     }
 
     private fun configurarSpinners() {
@@ -126,19 +132,24 @@ class CobrarCuotaActivity : AppCompatActivity() {
         }
 
         // Botón Cobrar Cuota
-        btnCobrarCuota.setOnClickListener {
+        btnOk.setOnClickListener {
             cobrarCuota()
         }
 
-        // Botón Cerrar - Limpiar campos
+        // Botón Cerrar
         btnCerrar.setOnClickListener {
-            limpiarCampos()
+            mostrarConfirmacionSalir()
         }
 
         // Botón Inicio - Con confirmación para salir
-        btnInicio.setOnClickListener {
-            mostrarConfirmacionSalir()
+//        btnInicio.setOnClickListener {
+//            mostrarConfirmacionSalir()
+//        }
+
+        btnBack.setOnClickListener {
+            finish()
         }
+
     }
 
     // NUEVO MÉTODO: Mostrar confirmación para salir
@@ -146,7 +157,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Confirmar Salida")
             .setMessage("¿Está seguro que desea salir? Se perderán los datos no guardados.")
-            .setPositiveButton("Sí, Salir") { dialog, which ->
+            .setPositiveButton("Salir") { dialog, which ->
                 // Si confirma, navegar a la pantalla principal
                 val intent = Intent(this, PantallaPrincipalActivity::class.java)
                 startActivity(intent)
@@ -215,13 +226,13 @@ class CobrarCuotaActivity : AppCompatActivity() {
                 // Socio: vence en 30 días
                 calendario.add(Calendar.DAY_OF_YEAR, DIAS_VENCIMIENTO_SOCIO)
                 val fechaVencimiento = dateFormat.format(calendario.time)
-                txtVencimiento.text = "Vencimiento: $fechaVencimiento (30 días)"
+                txtVencimiento.text = " $fechaVencimiento (30 días)"
                 txtVencimiento.setTextColor(getColor(android.R.color.holo_green_dark))
             }
             "No Socio" -> {
                 // No Socio: vence el mismo día
                 val fechaVencimiento = dateFormat.format(calendario.time)
-                txtVencimiento.text = "Vencimiento: $fechaVencimiento (Hoy mismo)"
+                txtVencimiento.text = " $fechaVencimiento (Hoy)"
                 txtVencimiento.setTextColor(getColor(android.R.color.holo_red_dark))
             }
             else -> {

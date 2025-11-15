@@ -32,7 +32,6 @@ class RegistrarSocioActivity : AppCompatActivity() {
     private lateinit var btnOk: ImageView
     private lateinit var btnInicio: ImageView
     private lateinit var btnCerrar: ImageView
-
     private lateinit var btnBack: ImageView
 
     // Arrays para los Spinners
@@ -41,8 +40,9 @@ class RegistrarSocioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
+        //enableEdgeToEdge()  //Habilita el modo "edge-to-edge" donde el contenido va detrás de las barras del sistema
         setContentView(R.layout.activity_registrar_socio)
+        //Agrega padding automáticamente para evitar que el contenido quede detrás de las barras del sistema
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
