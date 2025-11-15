@@ -13,7 +13,7 @@ import java.util.Locale
 // Clase para administrar la BBDD
 // Tenemos que pasar 4 argumentos, el contexto(this), el nombre de la BBDD, factory(hace referencia al cursor) y la version de la BBDD
 
-class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6) {
+class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 7) {
 
     // Función para crear la base de datos
     override fun onCreate(db: SQLiteDatabase) {
@@ -67,6 +67,19 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6)
         )
 
         android.util.Log.d("DB_CREATE", "Todas las tablas creadas exitosamente")
+
+        // Tabla de usuarios para login
+        db.execSQL(
+            "CREATE TABLE usuarios (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "username TEXT UNIQUE NOT NULL, " +
+                    "password TEXT NOT NULL, " +
+                    "rol TEXT DEFAULT 'admin', " +
+                    "fecha_creacion TEXT NOT NULL)"
+        )
+
+        // Insertar usuario por defecto
+        crearUsuarioPorDefecto(db)
     }
 
     // Funcion para actualizar la BBDD, solo se ejecuta cuando cambiamos la version
@@ -76,9 +89,68 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6)
         // Elimina la tabla
         db.execSQL("DROP TABLE IF EXISTS socios")
         db.execSQL("DROP TABLE IF EXISTS aptos_fisicos")
+        db.execSQL("DROP TABLE IF EXISTS comprobantes_pago")
+        db.execSQL("DROP TABLE IF EXISTS usuarios")
 
         // Vuelve a crear la tabla
         onCreate(db)
+    }
+
+    // Método para crear usuario por defecto
+    private fun crearUsuarioPorDefecto(db: SQLiteDatabase) {
+        try {
+            val values = ContentValues().apply {
+                put("username", "admin")
+                put("password", "1234") // En producción, esto debería estar encriptado
+                put("rol", "admin")
+                put("fecha_creacion", System.currentTimeMillis().toString())
+            }
+            db.insert("usuarios", null, values)
+            android.util.Log.d("DB_USUARIOS", "Usuario por defecto creado")
+        } catch (e: Exception) {
+            android.util.Log.e("DB_USUARIOS", "Error creando usuario por defecto: ${e.message}")
+        }
+    }
+
+    // Método para verificar credenciales de usuario
+    fun verificarUsuario(username: String, password: String): Boolean {
+        val db = this.readableDatabase
+        var usuarioValido = false
+
+        try {
+            // Primero verifica si la tabla existe
+            val cursorCheck = db.rawQuery(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='usuarios'",
+                null
+            )
+            val tablaExiste = cursorCheck.count > 0
+            cursorCheck.close()
+
+            if (!tablaExiste) {
+                android.util.Log.e("LOGIN", "La tabla 'usuarios' no existe")
+                return false
+            }
+
+            val cursor = db.rawQuery(
+                "SELECT * FROM usuarios WHERE username = ? AND password = ?",
+                arrayOf(username, password)
+            )
+
+            usuarioValido = cursor.count > 0
+            if (usuarioValido) {
+                android.util.Log.d("LOGIN", "Usuario válido: $username")
+            } else {
+                android.util.Log.d("LOGIN", "Credenciales inválidas para: $username")
+            }
+
+            cursor.close()
+        } catch (e: Exception) {
+            android.util.Log.e("LOGIN", "Error verificando usuario: ${e.message}", e)
+        } finally {
+            db.close()
+        }
+
+        return usuarioValido
     }
 
     // Método para insertar un nuevo socio
@@ -519,7 +591,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6)
 
             resultado = filasAfectadas > 0
 
-            android.util.Log.d("DB_DEBUG", "Update socio result: $resultado, filas afectadas: $filasAfectadas")
+            android.util.Log.d(
+                "DB_DEBUG",
+                "Update socio result: $resultado, filas afectadas: $filasAfectadas"
+            )
 
         } catch (e: Exception) {
             android.util.Log.e("DB_ERROR", "Error updating socio: ${e.message}", e)
@@ -529,7 +604,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, "Club.db", null, 6)
         }
         return resultado
     }
-
 
 
     /* *********************************************************** */

@@ -3,40 +3,100 @@ package com.elavincho.appclubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.elavincho.appclubdeportivo.R.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var dbHelper: DBHelper
+    private lateinit var edtUsername: EditText
+    private lateinit var edtPassword: EditText
+    private lateinit var btnAcceder: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        //enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
-        /*Botón Acceder*/
+        // Inicializar DBHelper
+        dbHelper = DBHelper(this)
 
-        /*Hay que indicar el tipo de elemento <>
-        * Hay que indicar el nombre el id dentro de ()*/
-        val btnAcceder = findViewById<Button>(id.btnAcceder)
+        // Inicializar vistas
+        inicializarVistas()
 
-        /*Hay que activar un evento para que funcione el botón*/
+        // Configurar eventos
+        configurarEventos()
+
+
+    }
+
+    private fun inicializarVistas() {
+        edtUsername = findViewById(R.id.edtUsername)
+        edtPassword = findViewById(R.id.edtPassword)
+        btnAcceder = findViewById(R.id.btnAcceder)
+    }
+
+    private fun configurarEventos() {
+        /* Botón Acceder */
         btnAcceder.setOnClickListener {
-            /* Intent es un objeto para solicitar una acción de otro componente de la aplicación
-            * para comunicar una activity con otra.
-            * Lleva 2 parametros, primero el contexto en el cual estamos trabajando this, dentro de la aplicación
-            * y luego el nombre de la activity con la cual se va a comunicar y agregarle ::class.java*/
-            val intent = Intent(this, PantallaPrincipalActivity::class.java)
-            /* Por ultimo hay que llamar al método startActivity() y pasarle el intent*/
-            startActivity(intent)
+            realizarLogin()
+        }
+    }
+
+    private fun realizarLogin() {
+        val username = edtUsername.text.toString().trim()
+        val password = edtPassword.text.toString().trim()
+
+        // Validaciones
+        if (username.isEmpty()) {
+            edtUsername.error = "Ingrese un usuario"
+            edtUsername.requestFocus()
+            return
         }
 
+        if (password.isEmpty()) {
+            edtPassword.error = "Ingrese una contraseña"
+            edtPassword.requestFocus()
+            return
+        }
 
+        try {
+            // Verificar credenciales en la base de datos
+            val credencialesValidas = dbHelper.verificarUsuario(username, password)
+
+            if (credencialesValidas) {
+                // Login exitoso
+                Toast.makeText(this, "✅ Login exitoso", Toast.LENGTH_SHORT).show()
+
+                // Navegar a la pantalla principal
+                val intent = Intent(this, PantallaPrincipalActivity::class.java)
+                startActivity(intent)
+                finish() // Cerrar la actividad de login
+            } else {
+                // Login fallido
+                Toast.makeText(this, "❌ Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                edtPassword.text.clear()
+                edtPassword.requestFocus()
+            }
+        } catch (e: Exception) {
+            // Manejar cualquier error
+            Toast.makeText(this, "❌ Error en la base de datos: ${e.message}", Toast.LENGTH_LONG).show()
+            android.util.Log.e("LOGIN_ERROR", "Error durante login: ${e.message}", e)
+        }
+    }
+
+    override fun onDestroy() {
+        dbHelper.close()
+        super.onDestroy()
     }
 }

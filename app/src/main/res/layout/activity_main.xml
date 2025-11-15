@@ -57,11 +57,11 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-
     </FrameLayout>
 
     <!-- Campo de Usuario -->
     <EditText
+        android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -76,6 +76,7 @@
 
     <!-- Campo de Contraseña -->
     <EditText
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
@@ -99,13 +100,14 @@
         android:textSize="25sp"
         tools:ignore="HardcodedText" />
 
-    <!-- Texto: FORGOT YOUR PASSOWORD? -->
+    <!-- Texto: FORGOT YOUR PASSWORD? -->
     <TextView
+        android:id="@+id/txtOlvidePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="FORGOT YOUR PASSOWORD?"
+        android:text="FORGOT YOUR PASSWORD?"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         tools:ignore="HardcodedText" />
