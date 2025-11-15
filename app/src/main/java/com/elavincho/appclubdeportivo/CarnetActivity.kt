@@ -20,7 +20,7 @@ class CarnetActivity : AppCompatActivity() {
     private lateinit var edtNumeroSocio: TextInputEditText
     private lateinit var btnBuscarSocio: Button
     private lateinit var btnGenerarCarnet: Button
-    private lateinit var btnInicio: ImageView
+    //private lateinit var btnInicio: ImageView
     private lateinit var layoutInfoSocio: LinearLayout
 
     // TextViews para mostrar datos
@@ -33,16 +33,17 @@ class CarnetActivity : AppCompatActivity() {
 
     private var socioSeleccionado: Socio? = null
     private var aptoFisico: AptoFisico? = null
+    private lateinit var btnBack: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_carnet)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Inicializar DBHelper
         dbHelper = DBHelper(this)
@@ -58,8 +59,8 @@ class CarnetActivity : AppCompatActivity() {
         edtNumeroSocio = findViewById(R.id.edtNumeroSocio)
         btnBuscarSocio = findViewById(R.id.btnBuscarSocio)
         btnGenerarCarnet = findViewById(R.id.btnGenerarCarnet)
-        btnInicio = findViewById(R.id.btnInicio)
         layoutInfoSocio = findViewById(R.id.layoutInfoSocio)
+        btnBack = findViewById(R.id.btnBack)
 
         // TextViews de información
         tvNumeroSocio = findViewById(R.id.tvNumeroSocio)
@@ -81,10 +82,7 @@ class CarnetActivity : AppCompatActivity() {
             generarCarnet()
         }
 
-        /* Botón Inicio */
-        btnInicio.setOnClickListener {
-            val intentPantallaPrincipal = Intent(this, PantallaPrincipalActivity::class.java)
-            startActivity(intentPantallaPrincipal)
+        btnBack.setOnClickListener {
             finish()
         }
     }
@@ -145,7 +143,7 @@ class CarnetActivity : AppCompatActivity() {
 
             // Cambiar color según estado del apto físico
             if (aptoFisico!!.esApto) {
-                tvFechaVencimiento.setTextColor(Color.GREEN)
+                tvFechaVencimiento.setTextColor(Color.GRAY)
             } else {
                 tvFechaVencimiento.setTextColor(Color.RED)
             }

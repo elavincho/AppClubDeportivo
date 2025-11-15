@@ -85,18 +85,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Fecha actual -->
-<!--                <TextView-->
-<!--                    -->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:background="@drawable/bg_text_input"-->
-<!--                    android:padding="15dp"-->
-<!--                    android:text="Fecha"-->
-<!--                    android:textSize="20sp"-->
-<!--                    tools:ignore="HardcodedText" />-->
-
                 <!-- Selección de Tipo de Socio -->
                 <Spinner
                     android:id="@+id/spinnerTipoSocio"
